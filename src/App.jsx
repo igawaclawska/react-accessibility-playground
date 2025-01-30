@@ -1,5 +1,9 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ProductPage from "./pages/ProductPage";
 import CategoryPage from "./pages/CategoryPage";
@@ -20,82 +24,94 @@ const App = () => {
           }}
         >
           <li>
-            <Link
+            <NavLink
               to="/"
-              style={{
+              style={({ isActive }) => ({
                 textDecoration: "none",
                 color: "#000",
                 padding: "0.5em",
                 transition: "color 0.3s",
-              }}
+                borderBottom: isActive ? "2px solid #000" : "none",
+                paddingBottom: isActive ? "0.2em" : "0",
+              })}
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              to="/category/category-1"
-              style={{
+            <NavLink
+              to="/category/all-products"
+              style={({ isActive }) => ({
                 textDecoration: "none",
                 color: "#000",
                 padding: "0.5em",
                 transition: "color 0.3s",
-              }}
+                borderBottom: isActive ? "2px solid #000" : "none",
+                paddingBottom: isActive ? "0.2em" : "0",
+              })}
+            >
+              All Products
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/category/category-1"
+              style={({ isActive }) => ({
+                textDecoration: "none",
+                color: "#000",
+                padding: "0.5em",
+                transition: "color 0.3s",
+                borderBottom: isActive ? "2px solid #000" : "none",
+                paddingBottom: isActive ? "0.2em" : "0",
+              })}
             >
               Category 1
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/category/category-2"
-              style={{
+              style={({ isActive }) => ({
                 textDecoration: "none",
                 color: "#000",
                 padding: "0.5em",
                 transition: "color 0.3s",
-              }}
+                borderBottom: isActive ? "2px solid #000" : "none",
+                paddingBottom: isActive ? "0.2em" : "0",
+              })}
             >
               Category 2
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/category/category-3"
-              style={{
+              style={({ isActive }) => ({
                 textDecoration: "none",
                 color: "#000",
                 padding: "0.5em",
                 transition: "color 0.3s",
-              }}
+                borderBottom: isActive ? "2px solid #000" : "none",
+                paddingBottom: isActive ? "0.2em" : "0",
+              })}
             >
               Category 3
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
+            <NavLink
               to="/cart"
-              style={{
+              style={({ isActive }) => ({
                 textDecoration: "none",
                 color: "#000",
                 padding: "0.5em",
                 transition: "color 0.3s",
-              }}
+                borderBottom: isActive ? "2px solid #000" : "none",
+                paddingBottom: isActive ? "0.2em" : "0",
+              })}
             >
               Cart
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/checkout"
-              style={{
-                textDecoration: "none",
-                color: "#000",
-                padding: "0.5em",
-                transition: "color 0.3s",
-              }}
-            >
-              Checkout
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -173,49 +189,52 @@ const App = () => {
             <h4>Quick Links</h4>
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li>
-                <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+                <NavLink
+                  to="/"
+                  style={{ textDecoration: "none", color: "#fff" }}
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/category/category-1"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Category 1
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/category/category-2"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Category 2
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/category/category-3"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Category 3
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/cart"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Cart
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/checkout"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Checkout
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -223,20 +242,20 @@ const App = () => {
             <h4>Legal</h4>
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li>
-                <Link
+                <NavLink
                   to="/privacy-policy"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Privacy Policy
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/terms-of-service"
                   style={{ textDecoration: "none", color: "#fff" }}
                 >
                   Terms of Service
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

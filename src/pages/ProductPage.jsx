@@ -1,21 +1,209 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
+  const navigate = useNavigate();
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    // Fetch product details based on categoryId and productId
+    // This is a placeholder for fetching product data
+    const fetchProduct = async () => {
+      // Replace with actual API call
+      const productData = {
+        id: productId,
+        name: `Product ${productId}`,
+        description: `This is a detailed description of Product ${productId}.`,
+        price: 49.99,
+        imgSrc: `https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
+      };
+      setProduct(productData);
+    };
+
+    fetchProduct();
+  }, [categoryId, productId]);
+
+  const handleQuantityChange = (delta) => {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
+  };
+
+  const handleAddToCart = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleGoToCart = () => {
+    navigate("/cart");
+  };
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="product-page">
-      <header className="product-header">
-        <h1>Product: {productId}</h1>
+    <div style={styles.productPage}>
+      <header style={styles.productHeader}>
+        <h1>{product.name}</h1>
         <p>Category: {categoryId}</p>
-        <p>
-          Displaying details for product {productId} in category {categoryId}.
-        </p>
-        <Link to={`/category/${categoryId}`}>Back to Category</Link>
+        <Link to={`/category/${categoryId}`} style={styles.backLink}>
+          Back to Category
+        </Link>
       </header>
-      {/* Add logic to display product details based on the categoryId and productId */}
+      <div style={styles.productDetails}>
+        <img
+          src={product.imgSrc}
+          alt={product.name}
+          style={styles.productImage}
+        />
+        <div style={styles.productInfo}>
+          <p style={styles.productDescription}>{product.description}</p>
+          <p style={styles.productPrice}>${product.price.toFixed(2)}</p>
+          <div style={styles.quantityControls}>
+            <button
+              onClick={() => handleQuantityChange(-1)}
+              style={styles.quantityButton}
+            >
+              -
+            </button>
+            <span style={styles.quantity}>{quantity}</span>
+            <button
+              onClick={() => handleQuantityChange(1)}
+              style={styles.quantityButton}
+            >
+              +
+            </button>
+          </div>
+          <button onClick={handleAddToCart} style={styles.addToCartButton}>
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+      {showModal && (
+        <div style={styles.modalOverlay}>
+          <div style={styles.modal}>
+            <p>Item has been added to the cart.</p>
+            <div style={styles.modalButtons}>
+              <button onClick={handleCloseModal} style={styles.modalButton}>
+                Continue shopping
+              </button>
+              <button onClick={handleGoToCart} style={styles.modalButton}>
+                Go to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
+};
+
+const styles = {
+  productPage: {
+    padding: "2em",
+    textAlign: "center",
+  },
+  productHeader: {
+    marginBottom: "2em",
+  },
+  backLink: {
+    display: "inline-block",
+    marginTop: "1em",
+    textDecoration: "none",
+    color: "#646cff",
+    fontWeight: "bold",
+    transition: "color 0.3s",
+  },
+  productDetails: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2em",
+  },
+  productImage: {
+    width: "300px",
+    height: "300px",
+    objectFit: "cover",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  },
+  productInfo: {
+    maxWidth: "400px",
+    textAlign: "left",
+  },
+  productDescription: {
+    fontSize: "1.2em",
+    marginBottom: "1em",
+  },
+  productPrice: {
+    fontSize: "1.5em",
+    fontWeight: "bold",
+    marginBottom: "1em",
+  },
+  quantityControls: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: "1em",
+  },
+  quantityButton: {
+    fontSize: "1.2em",
+    padding: "0.2em 0.5em",
+    margin: "0 0.5em",
+    cursor: "pointer",
+  },
+  quantity: {
+    fontSize: "1.2em",
+  },
+  addToCartButton: {
+    padding: "0.5em 1em",
+    fontSize: "1.2em",
+    cursor: "pointer",
+    backgroundColor: "#4caf50",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    transition: "background-color 0.3s",
+  },
+  modalOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modal: {
+    backgroundColor: "#fff",
+    padding: "2em",
+    borderRadius: "8px",
+    textAlign: "center",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  },
+  modalButtons: {
+    display: "flex",
+    justifyContent: "space-around",
+    marginTop: "1em",
+  },
+  modalButton: {
+    padding: "0.5em 1em",
+    fontSize: "1em",
+    cursor: "pointer",
+    backgroundColor: "#4caf50",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    transition: "background-color 0.3s",
+  },
 };
 
 export default ProductPage;
