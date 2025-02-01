@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
 import Modal from "../components/Modal";
@@ -11,32 +11,24 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const { products, isLoading } = useContext(ProductsContext);
   const { addToCart } = useContext(CartContext);
-  const [product, setProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState([]);
 
-  useEffect(() => {
-    const fetchProduct = () => {
-      let foundProduct = null;
-      if (categoryId === "all-products") {
-        for (const category of products) {
-          foundProduct = category.products.find(
-            (prod) => prod.id === productId
-          );
-          if (foundProduct) break;
-        }
-      } else {
-        const category = products.find((cat) => cat.id === categoryId);
-        if (category) {
-          foundProduct = category.products.find(
-            (prod) => prod.id === productId
-          );
-        }
+  const product = useMemo(() => {
+    if (categoryId === "all-products") {
+      for (const category of products) {
+        const foundProduct = category.products.find(
+          (prod) => prod.id === productId
+        );
+        if (foundProduct) return foundProduct;
       }
-      setProduct(foundProduct);
-    };
-
-    fetchProduct();
+    } else {
+      const category = products.find((cat) => cat.id === categoryId);
+      if (category) {
+        return category.products.find((prod) => prod.id === productId);
+      }
+    }
+    return null;
   }, [categoryId, productId, products]);
 
   const handleQuantityChange = (delta) => {

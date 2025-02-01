@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
@@ -6,19 +6,13 @@ import { ProductsContext } from "../contexts/ProductsContext";
 const CategoryPage = () => {
   const { products, isLoading } = useContext(ProductsContext);
   const { categoryId } = useParams();
-  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  useEffect(() => {
-    if (categoryId === "all-products") {
-      const allProducts = products.flatMap((category) => category.products);
-      setFilteredProducts(allProducts);
-    } else {
-      const foundCategory = products.find(
-        (category) => category.id === categoryId
-      );
-      setFilteredProducts(foundCategory ? foundCategory.products : []);
-    }
-  }, [categoryId, products]);
+  const filteredProducts = useMemo(() => {
+    console.log("Filter Memo called");
+    return categoryId === "all-products"
+      ? products.flatMap((category) => category.products)
+      : products.find((category) => category.id === categoryId)?.products || [];
+  }, [products, categoryId]);
 
   if (isLoading) {
     return <div>Loading...</div>;

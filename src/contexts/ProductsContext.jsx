@@ -11,7 +11,7 @@ export const ProductsProvider = ({ children }) => {
     setProducts(productsData.categories);
     setIsLoading(false);
     console.log("ProductsProvider: Products loaded");
-  }, []);
+  }, [products]);
 
   return (
     <ProductsContext.Provider value={{ products, isLoading }}>

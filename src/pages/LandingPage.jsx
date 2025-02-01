@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
 import Button from "../components/Button";
@@ -6,24 +6,29 @@ import Button from "../components/Button";
 const LandingPage = () => {
   const { products, isLoading } = useContext(ProductsContext);
 
-  const renderProducts = (filterFn, title) => (
-    <div style={styles.section}>
-      <p style={styles.categoryName}>{title}</p>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {products.flatMap((category) =>
-          category.products
-            .filter(filterFn)
-            .map((product) => (
-              <ProductCard
-                key={product.id}
-                productName={product.name}
-                imgSrc={product.imgSrc}
-                link={`/category/${category.id}/product/${product.id}`}
-              />
-            ))
-        )}
+  const renderProducts = useCallback(
+    (filterFn, title) => (
+      <div style={styles.section}>
+        <p style={styles.categoryName}>{title}</p>
+        <div
+          style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+        >
+          {products.flatMap((category) =>
+            category.products
+              .filter(filterFn)
+              .map((product) => (
+                <ProductCard
+                  key={product.id}
+                  productName={product.name}
+                  imgSrc={product.imgSrc}
+                  link={`/category/${category.id}/product/${product.id}`}
+                />
+              ))
+          )}
+        </div>
       </div>
-    </div>
+    ),
+    [products]
   );
 
   if (isLoading) {
