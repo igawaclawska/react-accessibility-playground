@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import ProductCard from "../components/ProductCard";
-import productsData from "../data/products.json"; // Adjust the path as necessary
+import { ProductsContext } from "../contexts/ProductsContext";
 
 const LandingPage = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    // Simulate fetching data from a JSON file
-    setProducts(productsData.categories);
-  }, []);
+  const { products, isLoading } = useContext(ProductsContext);
 
   const styles = {
     heroSection: {
@@ -67,6 +62,10 @@ const LandingPage = () => {
     </div>
   );
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div style={styles.heroSection}>
@@ -78,8 +77,9 @@ const LandingPage = () => {
         <div style={styles.heroText}>
           <h1 style={styles.heroHeading}>Welcome to Our Store</h1>
           <p style={styles.heroSubheading}>
-            Discover the most amazing useless products in our collection.
+            Discover the most amazing products in our collection.
           </p>
+          <button style={styles.ctaButton}>Shop Now</button>
         </div>
       </div>
       {renderProducts((product) => product.bestseller, "Bestsellers")}

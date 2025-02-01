@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-import productsData from "../data/products.json"; // Adjust the path as necessary
+import { ProductsContext } from "../contexts/ProductsContext";
 
 const CategoryPage = () => {
+  const { products, isLoading } = useContext(ProductsContext);
   const { categoryId } = useParams();
-  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     if (categoryId === "all-products") {
-      // If categoryId is "all-products", combine all products from all categories
-      const allProducts = productsData.categories.flatMap(
-        (category) => category.products
-      );
-      setProducts(allProducts);
+      const allProducts = products.flatMap((category) => category.products);
+      setFilteredProducts(allProducts);
     } else {
-      // Find the category based on the categoryId from the URL
-      const foundCategory = productsData.categories.find(
+      const foundCategory = products.find(
         (category) => category.id === categoryId
       );
-      setProducts(foundCategory ? foundCategory.products : []);
+      setFilteredProducts(foundCategory ? foundCategory.products : []);
     }
-  }, [categoryId]);
+  }, [categoryId, products]);
 
-  if (products.length === 0) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (filteredProducts.length === 0) {
+    return <div>No products found.</div>;
   }
 
   const styles = {
@@ -46,7 +47,7 @@ const CategoryPage = () => {
           : `Category: ${categoryId}`}
       </p>
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
             productName={product.name}

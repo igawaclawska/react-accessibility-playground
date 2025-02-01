@@ -1,34 +1,30 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect, useContext } from "react";
-import productsData from "../data/products.json"; // Adjust the path as necessary
+import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
   const navigate = useNavigate();
+  const { products, isLoading } = useContext(ProductsContext);
   const { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Fetch product details based on categoryId and productId
     const fetchProduct = () => {
       let foundProduct = null;
       if (categoryId === "all-products") {
-        // Search for the product across all categories
-        for (const category of productsData.categories) {
+        for (const category of products) {
           foundProduct = category.products.find(
             (prod) => prod.id === productId
           );
           if (foundProduct) break;
         }
       } else {
-        // Search for the product within the specified category
-        const category = productsData.categories.find(
-          (cat) => cat.id === categoryId
-        );
+        const category = products.find((cat) => cat.id === categoryId);
         if (category) {
           foundProduct = category.products.find(
             (prod) => prod.id === productId
@@ -39,7 +35,7 @@ const ProductPage = () => {
     };
 
     fetchProduct();
-  }, [categoryId, productId]);
+  }, [categoryId, productId, products]);
 
   const handleQuantityChange = (delta) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
@@ -60,8 +56,12 @@ const ProductPage = () => {
     navigate("/cart");
   };
 
-  if (!product) {
+  if (isLoading) {
     return <div>Loading...</div>;
+  }
+
+  if (!product) {
+    return <div>Product not found.</div>;
   }
 
   const styles = {

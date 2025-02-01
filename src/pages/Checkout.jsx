@@ -1,9 +1,7 @@
 import React, { useState, useContext } from "react";
-import { useLocation } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 
 const Checkout = () => {
-  const location = useLocation();
   const { cart } = useContext(CartContext);
 
   const [formData, setFormData] = useState({
@@ -27,11 +25,9 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Form submitted:", formData);
   };
 
-  // Calculate total price
   const totalPrice = cart.reduce(
     (total, item) => total + item.product.price * item.quantity,
     0
