@@ -1,10 +1,13 @@
 .card {
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  transition: 0.3s ease-in-out;
   margin: 1em;
   min-width: 300px;
   flex: 1;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .imageContainer {
@@ -16,7 +19,7 @@
 .image {
   width: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-in-out;
 }
 
 .image:hover {
@@ -28,15 +31,25 @@
 }
 
 .title {
-  font-size: 1.5em;
+  font-size: 1.2em;
+  text-align: left;
   margin-bottom: 0.5em;
 }
 
+.price {
+  font-size: 1.2em;
+  text-align: left;
+  color: #888;
+  margin-bottom: 1em;
+}
+
 .link {
-  color: #646cff;
-  text-decoration: none;
+  color: black;
+  text-decoration: underline;
   font-weight: bold;
   transition: color 0.3s;
+  text-underline-offset: 0.3em;
+  font-weight: 600;
 }
 
 .link:hover {

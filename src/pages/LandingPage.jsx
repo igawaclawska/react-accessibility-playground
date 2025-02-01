@@ -21,6 +21,7 @@ const LandingPage = () => {
                 <ProductCard
                   key={product.id}
                   productName={product.name}
+                  price={product.price}
                   imgSrc={product.imgSrc}
                   link={`/category/${category.id}/product/${product.id}`}
                 />
