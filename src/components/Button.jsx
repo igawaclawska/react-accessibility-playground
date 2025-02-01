@@ -1,4 +1,4 @@
-import { useState } from "react";
+import styles from "./Button.module.css";
 
 const Button = ({
   children,
@@ -6,62 +6,13 @@ const Button = ({
   variant = "primary",
   type = "button",
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const buttonStyle = {
-    ...styles.button,
-    ...(variant === "primary"
-      ? isHovered
-        ? styles.primaryHover
-        : styles.primary
-      : isHovered
-      ? styles.secondaryHover
-      : styles.secondary),
-  };
+  const buttonClass = `${styles.button} ${styles[variant]}`;
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      style={buttonStyle}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <button className={buttonClass} type={type} onClick={onClick}>
       {children}
     </button>
   );
-};
-
-const styles = {
-  button: {
-    padding: "0.5em 1em",
-    fontSize: "1em",
-    cursor: "pointer",
-    border: "none",
-    borderRadius: "0",
-    transition: "background-color 0.3s, color 0.3s",
-    margin: "1em",
-  },
-  primary: {
-    backgroundColor: "#000",
-    color: "#fff",
-    border: "2px solid #000",
-  },
-  primaryHover: {
-    backgroundColor: "#333",
-    color: "#fff",
-    border: "2px solid #000",
-  },
-  secondary: {
-    backgroundColor: "transparent",
-    color: "#000",
-    border: "2px solid #000",
-  },
-  secondaryHover: {
-    backgroundColor: "#000",
-    color: "#fff",
-    border: "2px solid #000",
-  },
 };
 
 export default Button;

@@ -1,0 +1,39 @@
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  background-color: #f5f5f5;
+  margin-bottom: 2em;
+}
+
+.heroImage {
+  width: 50%;
+  height: auto;
+  margin-right: 2em;
+}
+
+.heroText {
+  max-width: 50%;
+  text-align: left;
+}
+
+.heroHeading {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.heroSubheading {
+  font-size: 1.5em;
+  color: #666;
+}
+
+.categoryName {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+.section {
+  margin-bottom: 2em;
+}

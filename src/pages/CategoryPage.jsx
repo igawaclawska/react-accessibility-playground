@@ -2,6 +2,7 @@ import { useContext, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
+import styles from "./CategoryPage.module.css";
 
 const CategoryPage = () => {
   const { products, isLoading } = useContext(ProductsContext);
@@ -24,12 +25,12 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <p style={styles.categoryName}>
+      <p className={styles.categoryName}>
         {categoryId === "all-products"
           ? "All Products"
           : `Category: ${categoryId}`}
       </p>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+      <div className={styles.productList}>
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
@@ -41,17 +42,6 @@ const CategoryPage = () => {
       </div>
     </div>
   );
-};
-
-const styles = {
-  categoryName: {
-    fontSize: "2em",
-    fontWeight: "bold",
-    margin: "1em 0",
-  },
-  section: {
-    marginBottom: "2em",
-  },
 };
 
 export default CategoryPage;

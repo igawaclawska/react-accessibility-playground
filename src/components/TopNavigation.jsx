@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../contexts/ProductsContext";
+import styles from "./TopNavigation.module.css";
 
 const TopNavigation = () => {
   const { products, isLoading } = useContext(ProductsContext);
 
   if (isLoading) {
     return (
-      <nav style={styles.nav}>
-        <ul style={styles.ul}>
+      <nav className={styles.nav}>
+        <ul className={styles.ul}>
           <li>Loading...</li>
         </ul>
       </nav>
@@ -16,17 +17,28 @@ const TopNavigation = () => {
   }
 
   return (
-    <nav style={styles.nav}>
-      <ul style={styles.ul}>
+    <nav className={styles.nav}>
+      <ul className={styles.ul}>
         <li>
-          <NavLink to="/" style={({ isActive }) => styles.navLink(isActive)}>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.navLink} ${styles.navLinkActive}`
+                : styles.navLink
+            }
+          >
             Home
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/category/all-products"
-            style={({ isActive }) => styles.navLink(isActive)}
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.navLink} ${styles.navLinkActive}`
+                : styles.navLink
+            }
           >
             All Products
           </NavLink>
@@ -35,7 +47,11 @@ const TopNavigation = () => {
           <li key={category.id}>
             <NavLink
               to={`/category/${category.id}`}
-              style={({ isActive }) => styles.navLink(isActive)}
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.navLink} ${styles.navLinkActive}`
+                  : styles.navLink
+              }
             >
               {category.name}
             </NavLink>
@@ -44,7 +60,11 @@ const TopNavigation = () => {
         <li>
           <NavLink
             to="/cart"
-            style={({ isActive }) => styles.navLink(isActive)}
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.navLink} ${styles.navLinkActive}`
+                : styles.navLink
+            }
           >
             Cart
           </NavLink>
@@ -52,27 +72,6 @@ const TopNavigation = () => {
       </ul>
     </nav>
   );
-};
-
-const styles = {
-  nav: {
-    backgroundColor: "#f8f8f8",
-    padding: "1em",
-  },
-  ul: {
-    listStyle: "none",
-    padding: 0,
-    display: "flex",
-    justifyContent: "space-around",
-  },
-  navLink: (isActive) => ({
-    textDecoration: "none",
-    color: "#000",
-    padding: "0.5em",
-    transition: "color 0.3s",
-    borderBottom: isActive ? "2px solid #000" : "none",
-    paddingBottom: isActive ? "0.2em" : "0",
-  }),
 };
 
 export default TopNavigation;

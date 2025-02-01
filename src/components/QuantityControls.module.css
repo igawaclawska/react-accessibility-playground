@@ -1,0 +1,9 @@
+.quantityControls {
+  display: flex;
+  align-items: center;
+}
+
+.itemQuantity {
+  font-size: 1.2em;
+  margin: 0 1em;
+}

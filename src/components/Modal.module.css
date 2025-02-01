@@ -1,0 +1,44 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1em;
+}
+
+.itemList {
+  text-align: left;
+  margin-top: 1em;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.itemImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 1em;
+  border-radius: 4px;
+}

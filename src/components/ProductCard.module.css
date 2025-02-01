@@ -1,0 +1,44 @@
+.card {
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin: 1em;
+  min-width: 300px;
+  flex: 1;
+}
+
+.imageContainer {
+  overflow: hidden;
+  position: relative;
+  height: 24rem;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image:hover {
+  transform: scale(1.1);
+}
+
+.content {
+  padding: 1em;
+}
+
+.title {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.link {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: #333;
+}

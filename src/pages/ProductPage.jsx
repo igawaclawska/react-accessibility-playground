@@ -5,6 +5,7 @@ import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
+import styles from "./ProductPage.module.css";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
@@ -64,23 +65,23 @@ const ProductPage = () => {
   }
 
   return (
-    <div style={styles.productPage}>
-      <header style={styles.productHeader}>
+    <div className={styles.productPage}>
+      <header className={styles.productHeader}>
         <h1>{product.name}</h1>
         <p>Category: {categoryId}</p>
-        <Link to={`/category/${categoryId}`} style={styles.backLink}>
+        <Link to={`/category/${categoryId}`} className={styles.backLink}>
           Back to Category
         </Link>
       </header>
-      <div style={styles.productDetails}>
+      <div className={styles.productDetails}>
         <img
           src={product.imgSrc}
           alt={product.name}
-          style={styles.productImage}
+          className={styles.productImage}
         />
-        <div style={styles.productInfo}>
-          <p style={styles.productDescription}>{product.description}</p>
-          <p style={styles.productPrice}>${product.price.toFixed(2)}</p>
+        <div className={styles.productInfo}>
+          <p className={styles.productDescription}>{product.description}</p>
+          <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
           <Button onClick={handleAddToCart}>Add to Cart</Button>
         </div>
       </div>
@@ -94,49 +95,6 @@ const ProductPage = () => {
       />
     </div>
   );
-};
-
-const styles = {
-  productPage: {
-    padding: "2em",
-    textAlign: "center",
-  },
-  productHeader: {
-    marginBottom: "2em",
-  },
-  backLink: {
-    display: "inline-block",
-    marginTop: "1em",
-    textDecoration: "none",
-    color: "#646cff",
-    fontWeight: "bold",
-    transition: "color 0.3s",
-  },
-  productDetails: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2em",
-  },
-  productImage: {
-    width: "300px",
-    height: "300px",
-    objectFit: "cover",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  },
-  productInfo: {
-    maxWidth: "400px",
-    textAlign: "left",
-  },
-  productDescription: {
-    fontSize: "1.2em",
-    marginBottom: "1em",
-  },
-  productPrice: {
-    fontSize: "1.5em",
-    fontWeight: "bold",
-    marginBottom: "1em",
-  },
 };
 
 export default ProductPage;

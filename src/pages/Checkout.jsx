@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import styles from "./Checkout.module.css";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
@@ -38,32 +39,34 @@ const Checkout = () => {
   console.log("Checkout cart:", cart);
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>Checkout</h2>
-      <div style={styles.summary}>
-        <h3 style={styles.summaryHeading}>Order Summary</h3>
+    <div className={styles.container}>
+      <h2 className={styles.heading}>Checkout</h2>
+      <div className={styles.summary}>
+        <h3 className={styles.summaryHeading}>Order Summary</h3>
         {cart.map((item) => (
-          <div key={item.product.id} style={styles.summaryItem}>
+          <div key={item.product.id} className={styles.summaryItem}>
             <img
               src={item.product.imgSrc}
               alt={item.name}
-              style={styles.itemImage}
+              className={styles.itemImage}
             />
-            <div style={styles.itemDetails}>
-              <span style={styles.itemName}>{item.name}</span>
-              <span style={styles.itemQuantity}>Quantity: {item.quantity}</span>
-              <span style={styles.itemPrice}>
+            <div className={styles.itemDetails}>
+              <span className={styles.itemName}>{item.name}</span>
+              <span className={styles.itemQuantity}>
+                Quantity: {item.quantity}
+              </span>
+              <span className={styles.itemPrice}>
                 ${item.product.price.toFixed(2)}
               </span>
             </div>
           </div>
         ))}
-        <div style={styles.total}>
+        <div className={styles.total}>
           <h3>Total: ${totalPrice.toFixed(2)}</h3>
         </div>
       </div>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.formGroup}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
           <Input
             label="Name"
             type="text"
@@ -74,7 +77,7 @@ const Checkout = () => {
             isRequired={"required"}
           />
         </div>
-        <div style={styles.formGroup}>
+        <div className={styles.formGroup}>
           <Input
             label="Address"
             type="text"
@@ -85,7 +88,7 @@ const Checkout = () => {
             isRequired={"required"}
           />
         </div>
-        <div style={styles.formGroup}>
+        <div className={styles.formGroup}>
           <Input
             label="City"
             type="text"
@@ -96,7 +99,7 @@ const Checkout = () => {
             isRequired={"required"}
           />
         </div>
-        <div style={styles.formGroup}>
+        <div className={styles.formGroup}>
           <Input
             label="ZIP Code"
             type="number"
@@ -107,7 +110,7 @@ const Checkout = () => {
             isRequired={"required"}
           />
         </div>
-        <div style={styles.formGroup}>
+        <div className={styles.formGroup}>
           <Input
             label="Card Number"
             type="number"
@@ -118,7 +121,7 @@ const Checkout = () => {
             isRequired={"required"}
           />
         </div>
-        <div style={styles.formGroup}>
+        <div className={styles.formGroup}>
           <Input
             label="Expiration Date"
             type="date"
@@ -129,7 +132,7 @@ const Checkout = () => {
             isRequired={"required"}
           />
         </div>
-        <div style={styles.formGroup}>
+        <div className={styles.formGroup}>
           <Input
             label="CVV"
             type="number"
@@ -144,64 +147,6 @@ const Checkout = () => {
       </form>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: "2em",
-    textAlign: "center",
-  },
-  heading: {
-    fontSize: "2em",
-    marginBottom: "1em",
-  },
-  summary: {
-    marginBottom: "2em",
-  },
-  summaryHeading: {
-    fontSize: "1.5em",
-    marginBottom: "1em",
-  },
-  summaryItem: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "1em",
-  },
-  itemImage: {
-    width: "50px",
-    height: "50px",
-    objectFit: "cover",
-    marginRight: "1em",
-  },
-  itemDetails: {
-    flex: "1",
-    textAlign: "left",
-  },
-  itemName: {
-    display: "block",
-    fontSize: "1.2em",
-  },
-  itemQuantity: {
-    display: "block",
-    fontSize: "1em",
-  },
-  itemPrice: {
-    display: "block",
-    fontSize: "1em",
-  },
-  total: {
-    marginTop: "1em",
-    fontSize: "1.5em",
-  },
-  form: {
-    maxWidth: "600px",
-    margin: "0 auto",
-    textAlign: "left",
-  },
-  formGroup: {
-    marginBottom: "1em",
-  },
 };
 
 export default Checkout;

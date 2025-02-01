@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 import Button from "../components/Button";
 import QuantityControls from "../components/QuantityControls";
+import styles from "./Cart.module.css";
 
 const Cart = () => {
   const navigate = useNavigate();
   const { cart, setCart } = useContext(CartContext);
-
-  console.log("Cart:", cart);
 
   const handleQuantityChange = (itemId, delta) => {
     setCart((prevItems) =>
@@ -35,18 +34,18 @@ const Cart = () => {
   }
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>Shopping Cart</h2>
-      <div style={styles.cartItems}>
+    <div className={styles.container}>
+      <h2 className={styles.heading}>Shopping Cart</h2>
+      <div className={styles.cartItems}>
         {cart.map((item) => (
-          <div key={item.product.id} style={styles.cartItem}>
+          <div key={item.product.id} className={styles.cartItem}>
             <img
               src={item.product.imgSrc}
               alt={item.product.name}
-              style={styles.itemImage}
+              className={styles.itemImage}
             />
-            <span style={styles.itemName}>{item.product.name}</span>
-            <span style={styles.itemPrice}>
+            <span className={styles.itemName}>{item.product.name}</span>
+            <span className={styles.itemPrice}>
               ${item.product.price.toFixed(2)}
             </span>
             <QuantityControls
@@ -67,47 +66,6 @@ const Cart = () => {
       <Button onClick={handleCheckout}> Proceed to Checkout</Button>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: "2em",
-    textAlign: "center",
-  },
-  heading: {
-    fontSize: "2em",
-    marginBottom: "1em",
-  },
-  cartItems: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  cartItem: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "80%",
-    padding: "1em",
-    border: "1px solid #ccc",
-    marginBottom: "1em",
-  },
-  itemImage: {
-    width: "100px",
-    height: "100px",
-    objectFit: "cover",
-  },
-  itemName: {
-    flex: 1,
-    marginLeft: "1em",
-    textAlign: "left",
-    fontSize: "1.2em",
-    fontWeight: "bold",
-  },
-  itemPrice: {
-    fontSize: "1em",
-    color: "#888",
-  },
 };
 
 export default Cart;

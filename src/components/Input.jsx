@@ -1,7 +1,9 @@
+import styles from "./Input.module.css";
+
 const Input = ({ label, type, id, name, value, onChange, isRequired }) => {
   return (
     <>
-      <label style={styles.label} htmlFor={id}>
+      <label className={styles.label} htmlFor={id}>
         {label}
       </label>
       <input
@@ -10,26 +12,11 @@ const Input = ({ label, type, id, name, value, onChange, isRequired }) => {
         name={name}
         value={value}
         onChange={onChange}
-        style={styles.input}
-        required={isRequired && isRequired}
+        className={styles.input}
+        required={isRequired}
       />
     </>
   );
-};
-
-const styles = {
-  label: {
-    display: "block",
-    marginBottom: "0.5em",
-    fontWeight: "bold",
-  },
-  input: {
-    width: "100%",
-    padding: "0.5em",
-    fontSize: "1em",
-    borderRadius: "4px",
-    border: "1px solid #ddd",
-  },
 };
 
 export default Input;
