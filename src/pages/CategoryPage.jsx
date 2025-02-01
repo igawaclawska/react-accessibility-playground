@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
@@ -28,17 +28,6 @@ const CategoryPage = () => {
     return <div>No products found.</div>;
   }
 
-  const styles = {
-    categoryName: {
-      fontSize: "2em",
-      fontWeight: "bold",
-      margin: "1em 0",
-    },
-    section: {
-      marginBottom: "2em",
-    },
-  };
-
   return (
     <div>
       <p style={styles.categoryName}>
@@ -58,6 +47,17 @@ const CategoryPage = () => {
       </div>
     </div>
   );
+};
+
+const styles = {
+  categoryName: {
+    fontSize: "2em",
+    fontWeight: "bold",
+    margin: "1em 0",
+  },
+  section: {
+    marginBottom: "2em",
+  },
 };
 
 export default CategoryPage;

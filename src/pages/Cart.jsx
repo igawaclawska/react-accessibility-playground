@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
+import Button from "../components/Button";
+import QuantityControls from "../components/QuantityControls";
 
 const Cart = () => {
   const navigate = useNavigate();
   const { cart, setCart } = useContext(CartContext);
 
-  const handleQuantityChange = (productId, delta) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.product.id === productId
+  console.log("Cart:", cart);
+
+  const handleQuantityChange = (itemId, delta) => {
+    setCart((prevItems) =>
+      prevItems.map((item) =>
+        item.product.id === itemId
           ? { ...item, quantity: Math.max(1, item.quantity + delta) }
           : item
       )
@@ -30,82 +34,6 @@ const Cart = () => {
     return <div>Your cart is empty.</div>;
   }
 
-  const styles = {
-    container: {
-      padding: "2em",
-      textAlign: "center",
-    },
-    heading: {
-      fontSize: "2em",
-      marginBottom: "1em",
-    },
-    cartItems: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    cartItem: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      width: "80%",
-      padding: "1em",
-      border: "1px solid #ccc",
-      borderRadius: "8px",
-      marginBottom: "1em",
-    },
-    itemImage: {
-      width: "100px",
-      height: "100px",
-      objectFit: "cover",
-      borderRadius: "8px",
-    },
-    itemName: {
-      flex: 1,
-      marginLeft: "1em",
-      textAlign: "left",
-      fontSize: "1.2em",
-      fontWeight: "bold",
-    },
-    itemPrice: {
-      fontSize: "1em",
-      color: "#888",
-    },
-    quantityControls: {
-      display: "flex",
-      alignItems: "center",
-    },
-    quantityButton: {
-      fontSize: "1.2em",
-      padding: "0.2em 0.5em",
-      margin: "0 0.5em",
-      cursor: "pointer",
-    },
-    itemQuantity: {
-      fontSize: "1.2em",
-    },
-    removeButton: {
-      padding: "0.5em 1em",
-      fontSize: "1em",
-      cursor: "pointer",
-      backgroundColor: "#ff4d4d",
-      color: "#fff",
-      border: "none",
-      borderRadius: "4px",
-      transition: "background-color 0.3s",
-    },
-    checkoutButton: {
-      padding: "0.5em 1em",
-      fontSize: "1.2em",
-      cursor: "pointer",
-      backgroundColor: "#4caf50",
-      color: "#fff",
-      border: "none",
-      borderRadius: "4px",
-      transition: "background-color 0.3s",
-    },
-  };
-
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Shopping Cart</h2>
@@ -121,35 +49,65 @@ const Cart = () => {
             <span style={styles.itemPrice}>
               ${item.product.price.toFixed(2)}
             </span>
-            <div style={styles.quantityControls}>
-              <button
-                onClick={() => handleQuantityChange(item.product.id, -1)}
-                style={styles.quantityButton}
-              >
-                -
-              </button>
-              <span style={styles.itemQuantity}>{item.quantity}</span>
-              <button
-                onClick={() => handleQuantityChange(item.product.id, 1)}
-                style={styles.quantityButton}
-              >
-                +
-              </button>
-            </div>
-            <button
+            <QuantityControls
+              quantity={item.quantity}
+              handleQuantityChange={(delta) =>
+                handleQuantityChange(item.product.id, delta)
+              }
+            />
+            <Button
+              variant="secondary"
               onClick={() => handleRemoveItem(item.product.id)}
-              style={styles.removeButton}
             >
               Remove
-            </button>
+            </Button>
           </div>
         ))}
       </div>
-      <button onClick={handleCheckout} style={styles.checkoutButton}>
-        Proceed to Checkout
-      </button>
+      <Button onClick={handleCheckout}> Proceed to Checkout</Button>
     </div>
   );
+};
+
+const styles = {
+  container: {
+    padding: "2em",
+    textAlign: "center",
+  },
+  heading: {
+    fontSize: "2em",
+    marginBottom: "1em",
+  },
+  cartItems: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  cartItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "80%",
+    padding: "1em",
+    border: "1px solid #ccc",
+    marginBottom: "1em",
+  },
+  itemImage: {
+    width: "100px",
+    height: "100px",
+    objectFit: "cover",
+  },
+  itemName: {
+    flex: 1,
+    marginLeft: "1em",
+    textAlign: "left",
+    fontSize: "1.2em",
+    fontWeight: "bold",
+  },
+  itemPrice: {
+    fontSize: "1em",
+    color: "#888",
+  },
 };
 
 export default Cart;

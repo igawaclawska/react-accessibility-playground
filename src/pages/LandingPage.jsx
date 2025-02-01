@@ -1,46 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
+import Button from "../components/Button";
 
 const LandingPage = () => {
   const { products, isLoading } = useContext(ProductsContext);
-
-  const styles = {
-    heroSection: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "2em",
-      backgroundColor: "#f5f5f5",
-      marginBottom: "2em",
-    },
-    heroImage: {
-      width: "50%",
-      height: "auto",
-      borderRadius: "8px",
-      marginRight: "2em",
-    },
-    heroText: {
-      maxWidth: "50%",
-      textAlign: "left",
-    },
-    heroHeading: {
-      fontSize: "2.5em",
-      marginBottom: "0.5em",
-    },
-    heroSubheading: {
-      fontSize: "1.5em",
-      color: "#666",
-    },
-    categoryName: {
-      fontSize: "2em",
-      fontWeight: "bold",
-      margin: "1em 0",
-    },
-    section: {
-      marginBottom: "2em",
-    },
-  };
 
   const renderProducts = (filterFn, title) => (
     <div style={styles.section}>
@@ -79,7 +43,7 @@ const LandingPage = () => {
           <p style={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>
-          <button style={styles.ctaButton}>Shop Now</button>
+          <Button>Shop Now</Button>
         </div>
       </div>
       {renderProducts((product) => product.bestseller, "Bestsellers")}
@@ -87,6 +51,42 @@ const LandingPage = () => {
       {renderProducts((product) => product.newArrival, "New Arrivals")}
     </div>
   );
+};
+
+const styles = {
+  heroSection: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "2em",
+    backgroundColor: "#f5f5f5",
+    marginBottom: "2em",
+  },
+  heroImage: {
+    width: "50%",
+    height: "auto",
+    marginRight: "2em",
+  },
+  heroText: {
+    maxWidth: "50%",
+    textAlign: "left",
+  },
+  heroHeading: {
+    fontSize: "2.5em",
+    marginBottom: "0.5em",
+  },
+  heroSubheading: {
+    fontSize: "1.5em",
+    color: "#666",
+  },
+  categoryName: {
+    fontSize: "2em",
+    fontWeight: "bold",
+    margin: "1em 0",
+  },
+  section: {
+    marginBottom: "2em",
+  },
 };
 
 export default LandingPage;

@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
+import Button from "../components/Button";
+import Input from "../components/Input";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
@@ -62,120 +64,83 @@ const Checkout = () => {
       </div>
       <form onSubmit={handleSubmit} style={styles.form}>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="name">
-            Name
-          </label>
-          <input
+          <Input
+            label="Name"
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="address">
-            Address
-          </label>
-          <input
+          <Input
+            label="Address"
             type="text"
             id="address"
             name="address"
             value={formData.address}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="city">
-            City
-          </label>
-          <input
+          <Input
+            label="City"
             type="text"
             id="city"
             name="city"
             value={formData.city}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="state">
-            State
-          </label>
-          <input
-            type="text"
-            id="state"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="zip">
-            ZIP Code
-          </label>
-          <input
-            type="text"
+          <Input
+            label="ZIP Code"
+            type="number"
             id="zip"
             name="zip"
             value={formData.zip}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="cardNumber">
-            Card Number
-          </label>
-          <input
-            type="text"
+          <Input
+            label="Card Number"
+            type="number"
             id="cardNumber"
             name="cardNumber"
             value={formData.cardNumber}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="expirationDate">
-            Expiration Date
-          </label>
-          <input
-            type="text"
+          <Input
+            label="Expiration Date"
+            type="date"
             id="expirationDate"
             name="expirationDate"
             value={formData.expirationDate}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
         <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="cvv">
-            CVV
-          </label>
-          <input
-            type="text"
+          <Input
+            label="CVV"
+            type="number"
             id="cvv"
             name="cvv"
             value={formData.cvv}
             onChange={handleChange}
-            style={styles.input}
-            required
+            isRequired={"required"}
           />
         </div>
-        <button type="submit" style={styles.submitButton}>
-          Buy Now
-        </button>
+        <Button type="submit">Buy Now</Button>
       </form>
     </div>
   );
@@ -236,28 +201,6 @@ const styles = {
   },
   formGroup: {
     marginBottom: "1em",
-  },
-  label: {
-    display: "block",
-    marginBottom: "0.5em",
-    fontWeight: "bold",
-  },
-  input: {
-    width: "100%",
-    padding: "0.5em",
-    fontSize: "1em",
-    borderRadius: "4px",
-    border: "1px solid #ddd",
-  },
-  submitButton: {
-    padding: "0.5em 1em",
-    fontSize: "1.2em",
-    cursor: "pointer",
-    backgroundColor: "#4CAF50",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    marginTop: "1em",
   },
 };
 
