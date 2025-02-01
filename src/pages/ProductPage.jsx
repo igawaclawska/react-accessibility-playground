@@ -1,27 +1,41 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import productsData from "../data/products.json"; // Adjust the path as necessary
+import { CartContext } from "../contexts/CartContext";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     // Fetch product details based on categoryId and productId
-    // This is a placeholder for fetching product data
-    const fetchProduct = async () => {
-      // Replace with actual API call
-      const productData = {
-        id: productId,
-        name: `Product ${productId}`,
-        description: `This is a detailed description of Product ${productId}.`,
-        price: 49.99,
-        imgSrc: `https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D`,
-      };
-      setProduct(productData);
+    const fetchProduct = () => {
+      let foundProduct = null;
+      if (categoryId === "all-products") {
+        // Search for the product across all categories
+        for (const category of productsData.categories) {
+          foundProduct = category.products.find(
+            (prod) => prod.id === productId
+          );
+          if (foundProduct) break;
+        }
+      } else {
+        // Search for the product within the specified category
+        const category = productsData.categories.find(
+          (cat) => cat.id === categoryId
+        );
+        if (category) {
+          foundProduct = category.products.find(
+            (prod) => prod.id === productId
+          );
+        }
+      }
+      setProduct(foundProduct);
     };
 
     fetchProduct();
@@ -32,7 +46,10 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    setShowModal(true);
+    if (product) {
+      addToCart(product, quantity);
+      setShowModal(true);
+    }
   };
 
   const handleCloseModal = () => {
@@ -46,6 +63,107 @@ const ProductPage = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
+
+  const styles = {
+    productPage: {
+      padding: "2em",
+      textAlign: "center",
+    },
+    productHeader: {
+      marginBottom: "2em",
+    },
+    backLink: {
+      display: "inline-block",
+      marginTop: "1em",
+      textDecoration: "none",
+      color: "#646cff",
+      fontWeight: "bold",
+      transition: "color 0.3s",
+    },
+    productDetails: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "2em",
+    },
+    productImage: {
+      width: "300px",
+      height: "300px",
+      objectFit: "cover",
+      borderRadius: "8px",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    },
+    productInfo: {
+      maxWidth: "400px",
+      textAlign: "left",
+    },
+    productDescription: {
+      fontSize: "1.2em",
+      marginBottom: "1em",
+    },
+    productPrice: {
+      fontSize: "1.5em",
+      fontWeight: "bold",
+      marginBottom: "1em",
+    },
+    quantityControls: {
+      display: "flex",
+      alignItems: "center",
+      marginBottom: "1em",
+    },
+    quantityButton: {
+      fontSize: "1.2em",
+      padding: "0.2em 0.5em",
+      margin: "0 0.5em",
+      cursor: "pointer",
+    },
+    quantity: {
+      fontSize: "1.2em",
+    },
+    addToCartButton: {
+      padding: "0.5em 1em",
+      fontSize: "1.2em",
+      cursor: "pointer",
+      backgroundColor: "#4caf50",
+      color: "#fff",
+      border: "none",
+      borderRadius: "4px",
+      transition: "background-color 0.3s",
+    },
+    modalOverlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    modal: {
+      backgroundColor: "#fff",
+      padding: "2em",
+      borderRadius: "8px",
+      textAlign: "center",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    },
+    modalButtons: {
+      display: "flex",
+      justifyContent: "space-around",
+      marginTop: "1em",
+    },
+    modalButton: {
+      padding: "0.5em 1em",
+      fontSize: "1em",
+      cursor: "pointer",
+      backgroundColor: "#4caf50",
+      color: "#fff",
+      border: "none",
+      borderRadius: "4px",
+      transition: "background-color 0.3s",
+    },
+  };
 
   return (
     <div style={styles.productPage}>
@@ -103,107 +221,6 @@ const ProductPage = () => {
       )}
     </div>
   );
-};
-
-const styles = {
-  productPage: {
-    padding: "2em",
-    textAlign: "center",
-  },
-  productHeader: {
-    marginBottom: "2em",
-  },
-  backLink: {
-    display: "inline-block",
-    marginTop: "1em",
-    textDecoration: "none",
-    color: "#646cff",
-    fontWeight: "bold",
-    transition: "color 0.3s",
-  },
-  productDetails: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2em",
-  },
-  productImage: {
-    width: "300px",
-    height: "300px",
-    objectFit: "cover",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  },
-  productInfo: {
-    maxWidth: "400px",
-    textAlign: "left",
-  },
-  productDescription: {
-    fontSize: "1.2em",
-    marginBottom: "1em",
-  },
-  productPrice: {
-    fontSize: "1.5em",
-    fontWeight: "bold",
-    marginBottom: "1em",
-  },
-  quantityControls: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "1em",
-  },
-  quantityButton: {
-    fontSize: "1.2em",
-    padding: "0.2em 0.5em",
-    margin: "0 0.5em",
-    cursor: "pointer",
-  },
-  quantity: {
-    fontSize: "1.2em",
-  },
-  addToCartButton: {
-    padding: "0.5em 1em",
-    fontSize: "1.2em",
-    cursor: "pointer",
-    backgroundColor: "#4caf50",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    transition: "background-color 0.3s",
-  },
-  modalOverlay: {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modal: {
-    backgroundColor: "#fff",
-    padding: "2em",
-    borderRadius: "8px",
-    textAlign: "center",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  },
-  modalButtons: {
-    display: "flex",
-    justifyContent: "space-around",
-    marginTop: "1em",
-  },
-  modalButton: {
-    padding: "0.5em 1em",
-    fontSize: "1em",
-    cursor: "pointer",
-    backgroundColor: "#4caf50",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    transition: "background-color 0.3s",
-  },
 };
 
 export default ProductPage;

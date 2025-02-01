@@ -1,87 +1,62 @@
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import productsData from "../data/products.json"; // Adjust the path as necessary
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
-  return (
-    <>
-      <p style={styles.categoryName}>{categoryId}</p>
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-        <ProductCard
-          productName={"Product 1"}
-          imgSrc={
-            "https://images.unsplash.com/photo-1738070593158-9e84a49e7e60?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          }
-          link={"/category/category-1/product/1"}
-        />
-      </div>
-    </>
-  );
-};
+  const [products, setProducts] = useState([]);
 
-const styles = {
-  categoryName: {
-    fontSize: "2em",
-    fontWeight: "bold",
-    color: "#333",
-    margin: "1em 0",
-  },
+  useEffect(() => {
+    if (categoryId === "all-products") {
+      // If categoryId is "all-products", combine all products from all categories
+      const allProducts = productsData.categories.flatMap(
+        (category) => category.products
+      );
+      setProducts(allProducts);
+    } else {
+      // Find the category based on the categoryId from the URL
+      const foundCategory = productsData.categories.find(
+        (category) => category.id === categoryId
+      );
+      setProducts(foundCategory ? foundCategory.products : []);
+    }
+  }, [categoryId]);
+
+  if (products.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  const styles = {
+    categoryName: {
+      fontSize: "2em",
+      fontWeight: "bold",
+      margin: "1em 0",
+    },
+    section: {
+      marginBottom: "2em",
+    },
+  };
+
+  return (
+    <div>
+      <p style={styles.categoryName}>
+        {categoryId === "all-products"
+          ? "All Products"
+          : `Category: ${categoryId}`}
+      </p>
+      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            productName={product.name}
+            imgSrc={product.imgSrc}
+            link={`/category/${categoryId}/product/${product.id}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default CategoryPage;

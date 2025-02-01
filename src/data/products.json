@@ -1,0 +1,112 @@
+{
+  "categories": [
+    {
+      "id": "category-1",
+      "name": "Quantum Gadgets",
+      "products": [
+        {
+          "id": "1",
+          "name": "Quantum Flux Capacitor",
+          "description": "Harness the power of quantum mechanics to travel through time and space.",
+          "price": 999.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": true,
+          "recommended": false,
+          "newArrival": false
+        },
+        {
+          "id": "2",
+          "name": "Schrödinger's Cat Detector",
+          "description": "Find out if the cat is alive, dead, or both with this quantum detector.",
+          "price": 499.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": false,
+          "recommended": true,
+          "newArrival": false
+        },
+        {
+          "id": "3",
+          "name": "Heisenberg Uncertainty Remote",
+          "description": "Control your TV with uncertainty. You never know what channel you'll get!",
+          "price": 199.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3De",
+          "bestseller": false,
+          "recommended": false,
+          "newArrival": true
+        }
+      ]
+    },
+    {
+      "id": "category-2",
+      "name": "Alien Tech",
+      "products": [
+        {
+          "id": "4",
+          "name": "Alien Language Translator",
+          "description": "Communicate with extraterrestrial beings using this advanced translator.",
+          "price": 799.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": true,
+          "recommended": true,
+          "newArrival": false
+        },
+        {
+          "id": "5",
+          "name": "Zero-Gravity Toaster",
+          "description": "Make toast in zero gravity with this alien technology.",
+          "price": 299.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": false,
+          "recommended": false,
+          "newArrival": true
+        },
+        {
+          "id": "6",
+          "name": "Intergalactic Wi-Fi Router",
+          "description": "Get Wi-Fi signals from across the galaxy with this powerful router.",
+          "price": 399.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": true,
+          "recommended": false,
+          "newArrival": false
+        }
+      ]
+    },
+    {
+      "id": "category-3",
+      "name": "Useless Tech",
+      "products": [
+        {
+          "id": "7",
+          "name": "Self-Heating Ice Cream Cone",
+          "description": "An ice cream cone that heats itself. Perfect for melting your ice cream instantly!",
+          "price": 19.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": false,
+          "recommended": false,
+          "newArrival": true
+        },
+        {
+          "id": "8",
+          "name": "Bluetooth-Enabled Rock",
+          "description": "A rock with Bluetooth capabilities. Connect it to your phone for absolutely no reason!",
+          "price": 49.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": false,
+          "recommended": false,
+          "newArrival": false
+        },
+        {
+          "id": "9",
+          "name": "Solar-Powered Flashlight",
+          "description": "A flashlight that only works in sunlight. Completely useless at night!",
+          "price": 29.99,
+          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "bestseller": false,
+          "recommended": true,
+          "newArrival": false
+        }
+      ]
+    }
+  ]
+}

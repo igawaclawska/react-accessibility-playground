@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
 
 const Checkout = () => {
   const location = useLocation();
-  const cartItems = location.state?.cartItems || [];
+  const { cart } = useContext(CartContext);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -31,23 +32,31 @@ const Checkout = () => {
   };
 
   // Calculate total price
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.product.price * item.quantity,
     0
   );
+
+  console.log("Checkout cart:", cart);
 
   return (
     <div style={styles.container}>
       <h2 style={styles.heading}>Checkout</h2>
       <div style={styles.summary}>
         <h3 style={styles.summaryHeading}>Order Summary</h3>
-        {cartItems.map((item) => (
-          <div key={item.id} style={styles.summaryItem}>
-            <img src={item.imgSrc} alt={item.name} style={styles.itemImage} />
+        {cart.map((item) => (
+          <div key={item.product.id} style={styles.summaryItem}>
+            <img
+              src={item.product.imgSrc}
+              alt={item.name}
+              style={styles.itemImage}
+            />
             <div style={styles.itemDetails}>
               <span style={styles.itemName}>{item.name}</span>
               <span style={styles.itemQuantity}>Quantity: {item.quantity}</span>
-              <span style={styles.itemPrice}>${item.price.toFixed(2)}</span>
+              <span style={styles.itemPrice}>
+                ${item.product.price.toFixed(2)}
+              </span>
             </div>
           </div>
         ))}
