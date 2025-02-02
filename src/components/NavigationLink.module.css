@@ -1,0 +1,15 @@
+.navLink {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25em;
+  border-bottom: 2px solid transparent;
+}
+
+.navLinkActive {
+  border-bottom: 2px solid #000;
+  transition: 0.4s ease-in-out;
+}

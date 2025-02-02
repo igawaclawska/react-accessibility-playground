@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
 import { ProductsContext } from "../contexts/ProductsContext";
 import styles from "./TopNavigation.module.css";
+import NavigationLink from "./NavigationLink";
+import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const TopNavigation = () => {
   const { products, isLoading } = useContext(ProductsContext);
@@ -19,56 +20,19 @@ const TopNavigation = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.ul}>
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.navLink} ${styles.navLinkActive}`
-                : styles.navLink
-            }
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/category/all-products"
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.navLink} ${styles.navLinkActive}`
-                : styles.navLink
-            }
-          >
-            All Products
-          </NavLink>
-        </li>
+        <NavigationLink to="/"> Home</NavigationLink>
+        <NavigationLink to="/category/all-products">
+          All Products
+        </NavigationLink>
         {products.map((category) => (
-          <li key={category.id}>
-            <NavLink
-              to={`/category/${category.id}`}
-              className={({ isActive }) =>
-                isActive
-                  ? `${styles.navLink} ${styles.navLinkActive}`
-                  : styles.navLink
-              }
-            >
-              {category.name}
-            </NavLink>
-          </li>
+          <NavigationLink key={category.id} to={`/category/${category.id}`}>
+            {category.name}
+          </NavigationLink>
         ))}
-        <li>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.navLink} ${styles.navLinkActive}`
-                : styles.navLink
-            }
-          >
-            Cart
-          </NavLink>
-        </li>
+        <NavigationLink to="/cart">
+          <ShoppingCartIcon />
+          Cart
+        </NavigationLink>
       </ul>
     </nav>
   );
