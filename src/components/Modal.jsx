@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "./Button";
 import QuantityControls from "./QuantityControls";
 import styles from "./Modal.module.css";
@@ -7,7 +8,8 @@ const Modal = ({
   showModal,
   handleGoToCart,
   handleCloseModal,
-  selectedItem,
+  product,
+  addedQuantity,
   handleQuantityChange,
 }) => {
   return (
@@ -19,14 +21,16 @@ const Modal = ({
             <div className={styles.itemList}>
               <div className={styles.item}>
                 <img
-                  src={selectedItem.product.imgSrc}
-                  alt={selectedItem.product.name}
+                  src={product.imgSrc}
+                  alt={product.name}
                   className={styles.itemImage}
                 />
-                <div>{selectedItem.product.name}</div>
+                <div>{product.name}</div>
                 <QuantityControls
-                  quantity={selectedItem.quantity}
-                  handleQuantityChange={handleQuantityChange}
+                  quantity={addedQuantity}
+                  handleQuantityChange={(delta) =>
+                    handleQuantityChange(product.id, delta)
+                  }
                 />
               </div>
             </div>

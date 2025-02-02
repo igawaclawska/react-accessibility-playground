@@ -12,9 +12,9 @@ const ProductPage = () => {
   const { categoryId, productId } = useParams();
   const navigate = useNavigate();
   const { products, isLoading } = useContext(ProductsContext);
-  const { addToCart } = useContext(CartContext);
+  const { cart, addToCart, setCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState([]);
+  const [addedQuantity, setAddedQuantity] = useState(1);
 
   const product = useMemo(() => {
     if (categoryId === "all-products") {
@@ -33,27 +33,43 @@ const ProductPage = () => {
     return null;
   }, [categoryId, productId, products]);
 
-  const handleQuantityChange = (delta) => {
-    setSelectedItem({
-      ...selectedItem,
-      quantity: Math.max(1, selectedItem.quantity + delta),
-    });
+  const handleQuantityChange = (productId, delta) => {
+    setAddedQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.product.id === productId
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+          : item
+      )
+    );
   };
 
   const handleAddToCart = () => {
     if (product) {
-      setSelectedItem({ product: { ...product }, quantity: 1 });
+      const existingProduct = cart.find(
+        (item) => item.product.id === product.id
+      );
+      if (existingProduct) {
+        setCart((prevCart) =>
+          prevCart.map((item) =>
+            item.product.id === product.id
+              ? { ...item, quantity: item.quantity + addedQuantity }
+              : item
+          )
+        );
+      } else {
+        addToCart(product, addedQuantity);
+      }
       setShowModal(true);
-      console.log("SelectedItem", selectedItem);
     }
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
+    setAddedQuantity(1);
   };
 
   const handleGoToCart = () => {
-    addToCart(product, selectedItem.quantity);
     navigate("/cart");
   };
 
@@ -93,7 +109,8 @@ const ProductPage = () => {
         showModal={showModal}
         handleGoToCart={handleGoToCart}
         handleCloseModal={handleCloseModal}
-        selectedItem={selectedItem}
+        product={product}
+        addedQuantity={addedQuantity}
         handleQuantityChange={handleQuantityChange}
       />
     </div>
