@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
+import { CartContext } from "../contexts/CartContext";
 import styles from "./TopNavigation.module.css";
 import NavigationLink from "./NavigationLink";
 import ShoppingCartIcon from "./ShoppingCartIcon";
+import NotificationBadge from "./NotificationBadge";
 
 const TopNavigation = () => {
   const { products, isLoading } = useContext(ProductsContext);
+  const { getTotalItems } = useContext(CartContext);
+  const totalItems = getTotalItems();
 
   if (isLoading) {
     return (
@@ -32,6 +36,7 @@ const TopNavigation = () => {
         <NavigationLink to="/cart">
           <ShoppingCartIcon />
           Cart
+          {totalItems > 0 && <NotificationBadge count={totalItems} />}
         </NavigationLink>
       </ul>
     </nav>
