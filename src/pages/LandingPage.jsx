@@ -1,4 +1,4 @@
-import { useContext, useCallback } from "react";
+import { useContext, useCallback, useRef } from "react";
 import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
 import Button from "../components/Button";
@@ -7,10 +7,20 @@ import ArrowRight from "../components/ArrowRight";
 
 const LandingPage = () => {
   const { products, isLoading } = useContext(ProductsContext);
+  const bestsellersRef = useRef(null);
+
+  const handleScrollToBestsellers = () => {
+    if (bestsellersRef.current) {
+      window.scrollTo({
+        top: bestsellersRef.current.offsetTop - 50,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const renderProducts = useCallback(
-    (filterFn, title) => (
-      <div className={styles.section}>
+    (filterFn, title, ref) => (
+      <div className={styles.section} ref={ref}>
         <p className={styles.categoryName}>{title}</p>
         <div
           style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
@@ -51,12 +61,16 @@ const LandingPage = () => {
           <p className={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>
-          <Button>
+          <Button onClick={handleScrollToBestsellers}>
             Shop Now <ArrowRight />
           </Button>
         </div>
       </div>
-      {renderProducts((product) => product.bestseller, "Bestsellers")}
+      {renderProducts(
+        (product) => product.bestseller,
+        "Bestsellers",
+        bestsellersRef
+      )}
       {renderProducts((product) => product.recommended, "Recommended")}
       {renderProducts((product) => product.newArrival, "New Arrivals")}
     </div>
