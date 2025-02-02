@@ -6,6 +6,7 @@ import { CartContext } from "../contexts/CartContext";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
 import styles from "./ProductPage.module.css";
+import ShoppingCartIcon from "../components/ShoppingCartIcon";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
@@ -67,11 +68,10 @@ const ProductPage = () => {
   return (
     <div className={styles.productPage}>
       <header className={styles.productHeader}>
-        <h1>{product.name}</h1>
-        <p>Category: {categoryId}</p>
         <Link to={`/category/${categoryId}`} className={styles.backLink}>
           Back to Category
         </Link>
+        <h1>{product.name}</h1>
       </header>
       <div className={styles.productDetails}>
         <img
@@ -82,7 +82,10 @@ const ProductPage = () => {
         <div className={styles.productInfo}>
           <p className={styles.productDescription}>{product.description}</p>
           <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
-          <Button onClick={handleAddToCart}>Add to Cart</Button>
+          <Button onClick={handleAddToCart}>
+            <ShoppingCartIcon />
+            Add to Cart
+          </Button>
         </div>
       </div>
 

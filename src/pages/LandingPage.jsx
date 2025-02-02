@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
 import Button from "../components/Button";
 import styles from "./LandingPage.module.css";
+import ArrowRight from "../components/ArrowRight";
 
 const LandingPage = () => {
   const { products, isLoading } = useContext(ProductsContext);
@@ -50,7 +51,9 @@ const LandingPage = () => {
           <p className={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>
-          <Button>Shop Now</Button>
+          <Button>
+            Shop Now <ArrowRight />
+          </Button>
         </div>
       </div>
       {renderProducts((product) => product.bestseller, "Bestsellers")}

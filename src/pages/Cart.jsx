@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 import Button from "../components/Button";
+import DeleteIcon from "../components/DeleteIcon";
 import QuantityControls from "../components/QuantityControls";
 import styles from "./Cart.module.css";
+import ArrowRight from "../components/ArrowRight";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -58,12 +60,16 @@ const Cart = () => {
               variant="secondary"
               onClick={() => handleRemoveItem(item.product.id)}
             >
+              <DeleteIcon />
               Remove
             </Button>
           </div>
         ))}
       </div>
-      <Button onClick={handleCheckout}> Proceed to Checkout</Button>
+      <Button onClick={handleCheckout}>
+        {" "}
+        Proceed to Checkout <ArrowRight />
+      </Button>
     </div>
   );
 };

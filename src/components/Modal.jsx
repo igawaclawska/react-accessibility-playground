@@ -1,6 +1,7 @@
 import Button from "./Button";
 import QuantityControls from "./QuantityControls";
 import styles from "./Modal.module.css";
+import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Modal = ({
   showModal,
@@ -33,7 +34,10 @@ const Modal = ({
               <Button variant="secondary" onClick={handleCloseModal}>
                 Continue shopping
               </Button>
-              <Button onClick={handleGoToCart}>Go to Cart</Button>
+              <Button onClick={handleGoToCart}>
+                <ShoppingCartIcon />
+                Go to Cart
+              </Button>
             </div>
           </div>
         </div>
