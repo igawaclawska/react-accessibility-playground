@@ -23,13 +23,13 @@ const CategoryPage = () => {
     return <div>No products found.</div>;
   }
 
+  const formatCategoryName = (id) => {
+    return id.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
   return (
     <div>
-      <p className={styles.categoryName}>
-        {categoryId === "all-products"
-          ? "All Products"
-          : `Category: ${categoryId}`}
-      </p>
+      <p className={styles.categoryName}>{formatCategoryName(categoryId)}</p>
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
           <ProductCard

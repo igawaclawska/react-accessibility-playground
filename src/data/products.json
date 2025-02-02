@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "id": "category-1",
+      "id": "quantuum-gadgets",
       "name": "Quantum Gadgets",
       "products": [
         {
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": "category-2",
+      "id": "alien-tech",
       "name": "Alien Tech",
       "products": [
         {
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "id": "category-3",
+      "id": "useless-tech",
       "name": "Useless Tech",
       "products": [
         {
