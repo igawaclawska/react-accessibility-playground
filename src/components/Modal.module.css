@@ -2,8 +2,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -11,34 +11,35 @@
 }
 
 .modal {
-  background-color: #fff;
+  background-color: white;
   padding: 2em;
   border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.modalButtons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1em;
+  max-width: 500px;
+  width: 100%;
 }
 
 .itemList {
-  text-align: left;
-  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .item {
   display: flex;
   align-items: center;
-  margin-bottom: 0.5em;
+  gap: 1em;
 }
 
 .itemImage {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  margin-right: 1em;
-  border-radius: 4px;
+}
+
+.totalPrice {
+  margin-top: 0.5em;
+  font-weight: bold;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
 }

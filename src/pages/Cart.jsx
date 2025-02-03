@@ -67,7 +67,6 @@ const Cart = () => {
         ))}
       </div>
       <Button onClick={handleCheckout}>
-        {" "}
         Proceed to Checkout <ArrowRight />
       </Button>
     </div>

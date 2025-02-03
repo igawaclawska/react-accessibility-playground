@@ -12,6 +12,8 @@ const Modal = ({
   addedQuantity,
   handleQuantityChange,
 }) => {
+  const totalPrice = (product.price * addedQuantity).toFixed(2);
+
   return (
     <>
       {showModal && (
@@ -32,6 +34,7 @@ const Modal = ({
                     handleQuantityChange(product.id, delta)
                   }
                 />
+                <p className={styles.totalPrice}>Total Price: ${totalPrice}</p>
               </div>
             </div>
             <div className={styles.modalButtons}>

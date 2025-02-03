@@ -1,34 +1,33 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
+import { validate } from "../utils/validation";
+import OrderSummary from "../components/OrderSummary";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import useForm from "../hooks/useForm";
 import styles from "./Checkout.module.css";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: "",
+    email: "",
     address: "",
     city: "",
-    state: "",
     zip: "",
     cardNumber: "",
     expirationDate: "",
     cvv: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
+  const { formData, errors, handleChange, handleSubmit } = useForm(
+    initialFormData,
+    validate
+  );
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
   };
 
   const totalPrice = cart.reduce(
@@ -41,31 +40,8 @@ const Checkout = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>Checkout</h2>
-      <div className={styles.summary}>
-        <h3 className={styles.summaryHeading}>Order Summary</h3>
-        {cart.map((item) => (
-          <div key={item.product.id} className={styles.summaryItem}>
-            <img
-              src={item.product.imgSrc}
-              alt={item.name}
-              className={styles.itemImage}
-            />
-            <div className={styles.itemDetails}>
-              <span className={styles.itemName}>{item.name}</span>
-              <span className={styles.itemQuantity}>
-                Quantity: {item.quantity}
-              </span>
-              <span className={styles.itemPrice}>
-                ${item.product.price.toFixed(2)}
-              </span>
-            </div>
-          </div>
-        ))}
-        <div className={styles.total}>
-          <h3>Total: ${totalPrice.toFixed(2)}</h3>
-        </div>
-      </div>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <OrderSummary cart={cart} totalPrice={totalPrice} />
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.formGroup}>
           <Input
             label="Name"
@@ -74,9 +50,7 @@ const Checkout = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            isRequired={"required"}
-            helperText={"As it appears on your card"}
-            errorMessage={"Please enter your name"}
+            errorMessage={errors.name}
           />
         </div>
         <div className={styles.formGroup}>
@@ -87,7 +61,19 @@ const Checkout = () => {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            isRequired={"required"}
+            errorMessage={errors.address}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <Input
+            label="Email"
+            type="text"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            helperText={"Use a valid email format (e.g., name@example.com)"}
+            errorMessage={errors.email}
           />
         </div>
         <div className={styles.formGroup}>
@@ -98,7 +84,7 @@ const Checkout = () => {
             name="city"
             value={formData.city}
             onChange={handleChange}
-            isRequired={"required"}
+            errorMessage={errors.city}
           />
         </div>
         <div className={styles.formGroup}>
@@ -109,7 +95,8 @@ const Checkout = () => {
             name="zip"
             value={formData.zip}
             onChange={handleChange}
-            isRequired={"required"}
+            errorMessage={errors.zip}
+            helperText={"Please use a 5-digit zip code (e.g., 12345)"}
           />
         </div>
         <div className={styles.formGroup}>
@@ -120,7 +107,7 @@ const Checkout = () => {
             name="cardNumber"
             value={formData.cardNumber}
             onChange={handleChange}
-            isRequired={"required"}
+            errorMessage={errors.cardNumber}
           />
         </div>
         <div className={styles.formGroup}>
@@ -131,7 +118,7 @@ const Checkout = () => {
             name="expirationDate"
             value={formData.expirationDate}
             onChange={handleChange}
-            isRequired={"required"}
+            errorMessage={errors.expirationDate}
           />
         </div>
         <div className={styles.formGroup}>
@@ -142,7 +129,7 @@ const Checkout = () => {
             name="cvv"
             value={formData.cvv}
             onChange={handleChange}
-            isRequired={"required"}
+            errorMessage={errors.cvv}
           />
         </div>
         <Button type="submit">Buy Now</Button>
