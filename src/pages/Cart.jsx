@@ -4,28 +4,13 @@ import { CartContext } from "../contexts/CartContext";
 import Button from "../components/Button";
 import DeleteIcon from "../components/DeleteIcon";
 import QuantityControls from "../components/QuantityControls";
-import styles from "./Cart.module.css";
 import ArrowRight from "../components/ArrowRight";
+import styles from "./Cart.module.css";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cart, setCart } = useContext(CartContext);
-
-  const handleQuantityChange = (itemId, delta) => {
-    setCart((prevItems) =>
-      prevItems.map((item) =>
-        item.product.id === itemId
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
-  };
-
-  const handleRemoveItem = (productId) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.product.id !== productId)
-    );
-  };
+  const { cart, handleRemoveItem, handleQuantityChange } =
+    useContext(CartContext);
 
   const handleCheckout = () => {
     navigate("/checkout", { state: { cartItems: cart } });

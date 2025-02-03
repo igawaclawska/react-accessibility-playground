@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./OrderSummary.module.css";
 
 const OrderSummary = ({ cart, totalPrice }) => {

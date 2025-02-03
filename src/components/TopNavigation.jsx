@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
-import styles from "./TopNavigation.module.css";
 import NavigationLink from "./NavigationLink";
 import ShoppingCartIcon from "./ShoppingCartIcon";
 import NotificationBadge from "./NotificationBadge";
+import styles from "./TopNavigation.module.css";
 
 const TopNavigation = () => {
   const { categories, isLoading } = useContext(ProductsContext);

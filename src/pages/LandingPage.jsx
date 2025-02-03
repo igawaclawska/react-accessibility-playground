@@ -1,9 +1,9 @@
 import { useContext, useCallback, useRef } from "react";
-import ProductCard from "../components/ProductCard";
 import { ProductsContext } from "../contexts/ProductsContext";
+import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import styles from "./LandingPage.module.css";
 import ArrowRight from "../components/ArrowRight";
+import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
   const { productsByCategory, categories, isLoading } =

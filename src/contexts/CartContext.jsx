@@ -31,12 +31,37 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const handleRemoveItem = (productId) => {
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.product.id !== productId)
+    );
+  };
+
+  const handleQuantityChange = (itemId, delta) => {
+    setCart((prevItems) =>
+      prevItems.map((item) =>
+        item.product.id === itemId
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+          : item
+      )
+    );
+  };
+
   const getTotalItems = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, setCart, getTotalItems }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        setCart,
+        getTotalItems,
+        handleRemoveItem,
+        handleQuantityChange,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

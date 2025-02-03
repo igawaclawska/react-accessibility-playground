@@ -1,8 +1,7 @@
-import React from "react";
 import Button from "./Button";
 import QuantityControls from "./QuantityControls";
-import styles from "./Modal.module.css";
 import ShoppingCartIcon from "./ShoppingCartIcon";
+import styles from "./Modal.module.css";
 
 const Modal = ({
   showModal,

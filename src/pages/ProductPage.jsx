@@ -12,7 +12,7 @@ const ProductPage = () => {
   const { categoryId, productId } = useParams();
   const navigate = useNavigate();
   const { productsByCategory, isLoading } = useContext(ProductsContext);
-  const { cart, addToCart, setCart } = useContext(CartContext);
+  const { addToCart, handleQuantityChange } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
   const [addedQuantity, setAddedQuantity] = useState(1);
 
@@ -23,33 +23,14 @@ const ProductPage = () => {
 
   console.log("Product:", product);
 
-  const handleQuantityChange = (productId, delta) => {
+  const handleProductQuantityChange = (productId, delta) => {
     setAddedQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.product.id === productId
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
+    handleQuantityChange(productId, delta);
   };
 
   const handleAddToCart = () => {
     if (product) {
-      const existingProduct = cart.find(
-        (item) => item.product.id === product.id
-      );
-      if (existingProduct) {
-        setCart((prevCart) =>
-          prevCart.map((item) =>
-            item.product.id === product.id
-              ? { ...item, quantity: item.quantity + addedQuantity }
-              : item
-          )
-        );
-      } else {
-        addToCart(product, addedQuantity);
-      }
+      addToCart(product, addedQuantity);
       setShowModal(true);
     }
   };
@@ -101,7 +82,7 @@ const ProductPage = () => {
         handleCloseModal={handleCloseModal}
         product={product}
         addedQuantity={addedQuantity}
-        handleQuantityChange={handleQuantityChange}
+        handleQuantityChange={handleProductQuantityChange}
       />
     </div>
   );

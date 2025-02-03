@@ -1,7 +1,7 @@
 import { useContext, useMemo } from "react";
+import { ProductsContext } from "../contexts/ProductsContext";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-import { ProductsContext } from "../contexts/ProductsContext";
 import styles from "./CategoryPage.module.css";
 
 const CategoryPage = () => {
