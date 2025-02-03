@@ -9,7 +9,7 @@
           "name": "Quantum Flux Capacitor",
           "description": "Harness the power of quantum mechanics to travel through time and space.",
           "price": 999.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/quantum-flux-capacitor.png",
           "bestseller": true,
           "recommended": false,
           "newArrival": false
@@ -19,7 +19,7 @@
           "name": "Schrödinger's Cat Detector",
           "description": "Find out if the cat is alive, dead, or both with this quantum detector.",
           "price": 499.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/cat-detector.png",
           "bestseller": false,
           "recommended": true,
           "newArrival": false
@@ -29,7 +29,7 @@
           "name": "Heisenberg Uncertainty Remote",
           "description": "Control your TV with uncertainty. You never know what channel you'll get!",
           "price": 199.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3De",
+          "imgSrc": "/images/remote.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": true
@@ -39,7 +39,7 @@
           "name": "Quantum Entangled Headphones",
           "description": "Experience music from another universe—literally!",
           "price": 299.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/headphones.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -49,7 +49,7 @@
           "name": "Uncertainty Principle Dice",
           "description": "Roll the dice, but you’ll never know the number and its speed at the same time!",
           "price": 49.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/dice.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -59,7 +59,7 @@
           "name": "Superposition Alarm Clock",
           "description": "It rings and doesn’t ring at the same time! A perfect excuse for being late.",
           "price": 149.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/clock.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -75,7 +75,7 @@
           "name": "Alien Language Translator",
           "description": "Communicate with extraterrestrial beings using this advanced translator.",
           "price": 799.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/translator.png",
           "bestseller": false,
           "recommended": true,
           "newArrival": false
@@ -85,7 +85,7 @@
           "name": "Zero-Gravity Toaster",
           "description": "Make toast in zero gravity with this alien technology.",
           "price": 299.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/toaster.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": true
@@ -95,7 +95,7 @@
           "name": "Intergalactic Wi-Fi Router",
           "description": "Get Wi-Fi signals from across the galaxy with this powerful router.",
           "price": 399.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/intergalactic-wi-fi-router.png",
           "bestseller": true,
           "recommended": false,
           "newArrival": false
@@ -105,7 +105,7 @@
           "name": "Zero-Point Energy Module",
           "description": "A limitless power source derived from the vacuum of space!",
           "price": 1499.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/energy-module.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -115,7 +115,7 @@
           "name": "Graviton Manipulator",
           "description": "Control gravity around you for ultimate convenience!",
           "price": 1299.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/gravity.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -125,7 +125,7 @@
           "name": "Neural Uplink Helmet",
           "description": "Connect your mind directly to the intergalactic network!",
           "price": 1799.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/helmet.png",
           "bestseller": true,
           "recommended": false,
           "newArrival": false
@@ -141,7 +141,7 @@
           "name": "Self-Heating Ice Cream Cone",
           "description": "An ice cream cone that heats itself. Perfect for melting your ice cream instantly!",
           "price": 19.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/ice-cream-cone.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": true
@@ -151,7 +151,7 @@
           "name": "Bluetooth-Enabled Rock",
           "description": "A rock with Bluetooth capabilities. Connect it to your phone for absolutely no reason!",
           "price": 49.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/rock.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -161,7 +161,7 @@
           "name": "Solar-Powered Flashlight",
           "description": "A flashlight that only works in sunlight. Completely useless at night!",
           "price": 29.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/flashlight.png",
           "bestseller": false,
           "recommended": true,
           "newArrival": false
@@ -171,7 +171,7 @@
           "name": "Infinite Loading Screen",
           "description": "A device that perpetually loads without ever displaying content.",
           "price": 19.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/loading-screen.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -181,7 +181,7 @@
           "name": "Invisible Remote",
           "description": "A remote control so advanced, you can’t see or find it.",
           "price": 29.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/invisible.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false
@@ -191,7 +191,7 @@
           "name": "Battery-Powered Solar Charger",
           "description": "A solar charger that only works when charged by batteries.",
           "price": 39.99,
-          "imgSrc": "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "imgSrc": "/images/solar-panel.png",
           "bestseller": false,
           "recommended": false,
           "newArrival": false

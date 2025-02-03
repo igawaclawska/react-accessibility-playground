@@ -75,6 +75,8 @@ const Checkout = () => {
             value={formData.name}
             onChange={handleChange}
             isRequired={"required"}
+            helperText={"As it appears on your card"}
+            errorMessage={"Please enter your name"}
           />
         </div>
         <div className={styles.formGroup}>

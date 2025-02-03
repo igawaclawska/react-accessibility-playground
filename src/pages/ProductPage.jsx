@@ -33,6 +33,9 @@ const ProductPage = () => {
     return null;
   }, [categoryId, productId, products]);
 
+  // Debugging: Log the product object
+  console.log("Product:", product);
+
   const handleQuantityChange = (productId, delta) => {
     setAddedQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
     setCart((prevCart) =>

@@ -25,8 +25,9 @@ const LandingPage = () => {
         <div
           style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
         >
-          {products.flatMap((category) =>
-            category.products
+          {products.flatMap((category) => {
+            const { name } = category;
+            return category.products
               .filter(filterFn)
               .map((product) => (
                 <ProductCard
@@ -34,10 +35,11 @@ const LandingPage = () => {
                   productName={product.name}
                   price={product.price}
                   imgSrc={product.imgSrc}
+                  category={name}
                   link={`/category/${category.id}/product/${product.id}`}
                 />
-              ))
-          )}
+              ));
+          })}
         </div>
       </div>
     ),
@@ -52,7 +54,7 @@ const LandingPage = () => {
     <div>
       <div className={styles.heroSection}>
         <img
-          src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="/images/headphones.png"
           alt="Hero"
           className={styles.heroImage}
         />
