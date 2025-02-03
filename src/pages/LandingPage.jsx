@@ -58,7 +58,7 @@ const LandingPage = () => {
       <div className={styles.heroSection}>
         <img
           src="/images/headphones.png"
-          alt="Hero"
+          // alt="Hero"
           className={styles.heroImage}
         />
         <div className={styles.heroText}>

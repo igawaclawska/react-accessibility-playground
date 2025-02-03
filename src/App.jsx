@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import ProductPage from "./pages/ProductPage";
 import CategoryPage from "./pages/CategoryPage";

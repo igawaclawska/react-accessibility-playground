@@ -12,7 +12,13 @@ export default [
     languageOptions: {
       ...jsxA11y.flatConfigs.recommended.languageOptions,
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        test: "readonly",
+        expect: "readonly",
+        global: "readonly",
+        require: "readonly",
+      },
       parserOptions: {
         ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
@@ -33,11 +39,14 @@ export default [
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.flatConfigs.recommended.rules,
       "react/jsx-no-target-blank": "off",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      // "react-refresh/only-export-components": [
+      //   "warn",
+      //   { allowConstantExport: true },
+      // ],
       "jsx-a11y/alt-text": "error",
+      "react/prop-types": "off",
+      "react-refresh/only-export-components": "off",
+      // "no-undef": "off",
     },
   },
 ];

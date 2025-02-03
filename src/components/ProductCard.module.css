@@ -11,7 +11,7 @@
 }
 
 .card:hover .image {
-  transform: scale(1.1); /* Zoom in the image */
+  transform: scale(1.1);
 }
 
 .imageContainer {
