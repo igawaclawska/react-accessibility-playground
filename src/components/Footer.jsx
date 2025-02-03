@@ -4,7 +4,7 @@ import { ProductsContext } from "../contexts/ProductsContext";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
-  const { products, isLoading } = useContext(ProductsContext);
+  const { categories, isLoading } = useContext(ProductsContext);
 
   if (isLoading) {
     return <footer className={styles.footer}>Loading...</footer>;
@@ -67,7 +67,7 @@ const Footer = () => {
                 All Products
               </NavLink>
             </li>
-            {products.map((category) => (
+            {categories.map((category) => (
               <li key={category.id}>
                 <NavLink
                   to={`/category/${category.id}`}

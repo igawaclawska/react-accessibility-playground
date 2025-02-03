@@ -5,15 +5,23 @@ export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [productsByCategory, setProductsByCategory] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 10));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         setCategories(productsData.categories);
-        setProducts(productsData.products);
+
+        const groupedProducts = productsData.products.reduce((acc, product) => {
+          if (!acc[product.categoryId]) {
+            acc[product.categoryId] = [];
+          }
+          acc[product.categoryId].push(product);
+          return acc;
+        }, {});
+        setProductsByCategory(groupedProducts);
       } catch (error) {
         console.error("Failed to fetch products data:", error);
       } finally {
@@ -25,7 +33,9 @@ export const ProductsProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ categories, products, isLoading }}>
+    <ProductsContext.Provider
+      value={{ categories, productsByCategory, isLoading }}
+    >
       {children}
     </ProductsContext.Provider>
   );

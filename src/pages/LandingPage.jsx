@@ -6,7 +6,8 @@ import styles from "./LandingPage.module.css";
 import ArrowRight from "../components/ArrowRight";
 
 const LandingPage = () => {
-  const { products, categories, isLoading } = useContext(ProductsContext);
+  const { productsByCategory, categories, isLoading } =
+    useContext(ProductsContext);
   const bestsellersRef = useRef(null);
 
   const handleScrollToBestsellers = () => {
@@ -20,7 +21,10 @@ const LandingPage = () => {
 
   const renderProducts = useCallback(
     (filterFn, title, ref) => {
-      const filteredProducts = products.filter(filterFn);
+      const filteredProducts = categories.flatMap((category) => {
+        const productsInCategory = productsByCategory[category.id] || [];
+        return productsInCategory.filter(filterFn);
+      });
 
       if (filteredProducts.length === 0) return null;
 
@@ -49,7 +53,7 @@ const LandingPage = () => {
         </div>
       );
     },
-    [products, categories]
+    [categories, productsByCategory]
   );
 
   if (isLoading) {
@@ -74,12 +78,15 @@ const LandingPage = () => {
           </Button>
         </div>
       </div>
+
       {renderProducts(
         (product) => product.bestseller,
         "Bestsellers",
         bestsellersRef
       )}
+
       {renderProducts((product) => product.recommended, "Recommended")}
+
       {renderProducts((product) => product.newArrival, "New Arrivals")}
     </div>
   );

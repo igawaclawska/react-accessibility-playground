@@ -11,16 +11,15 @@ import ShoppingCartIcon from "../components/ShoppingCartIcon";
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
   const navigate = useNavigate();
-  const { products, isLoading } = useContext(ProductsContext);
+  const { productsByCategory, isLoading } = useContext(ProductsContext);
   const { cart, addToCart, setCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
   const [addedQuantity, setAddedQuantity] = useState(1);
 
   const product = useMemo(() => {
-    return products.find(
-      (prod) => prod.id === productId && prod.categoryId === categoryId
-    );
-  }, [categoryId, productId, products]);
+    const categoryProducts = productsByCategory[categoryId] || [];
+    return categoryProducts.find((prod) => prod.id === productId);
+  }, [categoryId, productId, productsByCategory]);
 
   console.log("Product:", product);
 

@@ -5,18 +5,18 @@ import { ProductsContext } from "../contexts/ProductsContext";
 import styles from "./CategoryPage.module.css";
 
 const CategoryPage = () => {
-  const { products, isLoading } = useContext(ProductsContext);
+  const { productsByCategory, isLoading } = useContext(ProductsContext);
   const { categoryId } = useParams();
 
   const filteredProducts = useMemo(() => {
     console.log("Filter Memo called");
 
     if (categoryId === "all-products") {
-      return products;
+      return Object.values(productsByCategory).flat();
     }
 
-    return products.filter((product) => product.categoryId === categoryId);
-  }, [products, categoryId]);
+    return productsByCategory[categoryId] || [];
+  }, [productsByCategory, categoryId]);
 
   if (isLoading) {
     return <div>Loading...</div>;
