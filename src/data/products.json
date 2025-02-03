@@ -2,201 +2,215 @@
   "categories": [
     {
       "id": "quantuum-gadgets",
-      "name": "Quantum Gadgets",
-      "products": [
-        {
-          "id": "1",
-          "name": "Quantum Flux Capacitor",
-          "description": "Harness the power of quantum mechanics to travel through time and space.",
-          "price": 999.99,
-          "imgSrc": "/images/quantum-flux-capacitor.png",
-          "bestseller": true,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "2",
-          "name": "Schrödinger's Cat Detector",
-          "description": "Find out if the cat is alive, dead, or both with this quantum detector.",
-          "price": 499.99,
-          "imgSrc": "/images/cat-detector.png",
-          "bestseller": false,
-          "recommended": true,
-          "newArrival": false
-        },
-        {
-          "id": "3",
-          "name": "Heisenberg Uncertainty Remote",
-          "description": "Control your TV with uncertainty. You never know what channel you'll get!",
-          "price": 199.99,
-          "imgSrc": "/images/remote.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": true
-        },
-        {
-          "id": "4",
-          "name": "Quantum Entangled Headphones",
-          "description": "Experience music from another universe—literally!",
-          "price": 299.99,
-          "imgSrc": "/images/headphones.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "5",
-          "name": "Uncertainty Principle Dice",
-          "description": "Roll the dice, but you’ll never know the number and its speed at the same time!",
-          "price": 49.99,
-          "imgSrc": "/images/dice.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "6",
-          "name": "Superposition Alarm Clock",
-          "description": "It rings and doesn’t ring at the same time! A perfect excuse for being late.",
-          "price": 149.99,
-          "imgSrc": "/images/clock.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        }
-      ]
+      "name": "Quantum Gadgets"
     },
     {
       "id": "alien-tech",
-      "name": "Alien Tech",
-      "products": [
-        {
-          "id": "7",
-          "name": "Alien Language Translator",
-          "description": "Communicate with extraterrestrial beings using this advanced translator.",
-          "price": 799.99,
-          "imgSrc": "/images/translator.png",
-          "bestseller": false,
-          "recommended": true,
-          "newArrival": false
-        },
-        {
-          "id": "8",
-          "name": "Zero-Gravity Toaster",
-          "description": "Make toast in zero gravity with this alien technology.",
-          "price": 299.99,
-          "imgSrc": "/images/toaster.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": true
-        },
-        {
-          "id": "9",
-          "name": "Intergalactic Wi-Fi Router",
-          "description": "Get Wi-Fi signals from across the galaxy with this powerful router.",
-          "price": 399.99,
-          "imgSrc": "/images/intergalactic-wi-fi-router.png",
-          "bestseller": true,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "10",
-          "name": "Zero-Point Energy Module",
-          "description": "A limitless power source derived from the vacuum of space!",
-          "price": 1499.99,
-          "imgSrc": "/images/energy-module.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "11",
-          "name": "Graviton Manipulator",
-          "description": "Control gravity around you for ultimate convenience!",
-          "price": 1299.99,
-          "imgSrc": "/images/gravity.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "12",
-          "name": "Neural Uplink Helmet",
-          "description": "Connect your mind directly to the intergalactic network!",
-          "price": 1799.99,
-          "imgSrc": "/images/helmet.png",
-          "bestseller": true,
-          "recommended": false,
-          "newArrival": false
-        }
-      ]
+      "name": "Alien Tech"
     },
     {
       "id": "useless-tech",
-      "name": "Useless Tech",
-      "products": [
-        {
-          "id": "13",
-          "name": "Self-Heating Ice Cream Cone",
-          "description": "An ice cream cone that heats itself. Perfect for melting your ice cream instantly!",
-          "price": 19.99,
-          "imgSrc": "/images/ice-cream-cone.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": true
-        },
-        {
-          "id": "14",
-          "name": "Bluetooth-Enabled Rock",
-          "description": "A rock with Bluetooth capabilities. Connect it to your phone for absolutely no reason!",
-          "price": 49.99,
-          "imgSrc": "/images/rock.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "15",
-          "name": "Solar-Powered Flashlight",
-          "description": "A flashlight that only works in sunlight. Completely useless at night!",
-          "price": 29.99,
-          "imgSrc": "/images/flashlight.png",
-          "bestseller": false,
-          "recommended": true,
-          "newArrival": false
-        },
-        {
-          "id": "16",
-          "name": "Infinite Loading Screen",
-          "description": "A device that perpetually loads without ever displaying content.",
-          "price": 19.99,
-          "imgSrc": "/images/loading-screen.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "17",
-          "name": "Invisible Remote",
-          "description": "A remote control so advanced, you can’t see or find it.",
-          "price": 29.99,
-          "imgSrc": "/images/invisible.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        },
-        {
-          "id": "18",
-          "name": "Battery-Powered Solar Charger",
-          "description": "A solar charger that only works when charged by batteries.",
-          "price": 39.99,
-          "imgSrc": "/images/solar-panel.png",
-          "bestseller": false,
-          "recommended": false,
-          "newArrival": false
-        }
-      ]
+      "name": "Useless Tech"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Quantum Flux Capacitor",
+      "description": "Harness the power of quantum mechanics to travel through time and space.",
+      "price": 999.99,
+      "imgSrc": "/images/quantum-flux-capacitor.png",
+      "bestseller": true,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "quantuum-gadgets"
+    },
+    {
+      "id": "2",
+      "name": "Schrödinger's Cat Detector",
+      "description": "Find out if the cat is alive, dead, or both with this quantum detector.",
+      "price": 499.99,
+      "imgSrc": "/images/cat-detector.png",
+      "bestseller": false,
+      "recommended": true,
+      "newArrival": false,
+      "categoryId": "quantuum-gadgets"
+    },
+    {
+      "id": "3",
+      "name": "Heisenberg Uncertainty Remote",
+      "description": "Control your TV with uncertainty. You never know what channel you'll get!",
+      "price": 199.99,
+      "imgSrc": "/images/remote.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": true,
+      "categoryId": "quantuum-gadgets"
+    },
+    {
+      "id": "4",
+      "name": "Quantum Entangled Headphones",
+      "description": "Experience music from another universe—literally!",
+      "price": 299.99,
+      "imgSrc": "/images/headphones.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "quantuum-gadgets"
+    },
+    {
+      "id": "5",
+      "name": "Uncertainty Principle Dice",
+      "description": "Roll the dice, but you’ll never know the number and its speed at the same time!",
+      "price": 49.99,
+      "imgSrc": "/images/dice.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "quantuum-gadgets"
+    },
+    {
+      "id": "6",
+      "name": "Superposition Alarm Clock",
+      "description": "It rings and doesn’t ring at the same time! A perfect excuse for being late.",
+      "price": 149.99,
+      "imgSrc": "/images/clock.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "quantuum-gadgets"
+    },
+    {
+      "id": "7",
+      "name": "Alien Language Translator",
+      "description": "Communicate with extraterrestrial beings using this advanced translator.",
+      "price": 799.99,
+      "imgSrc": "/images/translator.png",
+      "bestseller": false,
+      "recommended": true,
+      "newArrival": false,
+      "categoryId": "alien-tech"
+    },
+    {
+      "id": "8",
+      "name": "Zero-Gravity Toaster",
+      "description": "Make toast in zero gravity with this alien technology.",
+      "price": 299.99,
+      "imgSrc": "/images/toaster.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": true,
+      "categoryId": "alien-tech"
+    },
+    {
+      "id": "9",
+      "name": "Intergalactic Wi-Fi Router",
+      "description": "Get Wi-Fi signals from across the galaxy with this powerful router.",
+      "price": 399.99,
+      "imgSrc": "/images/intergalactic-wi-fi-router.png",
+      "bestseller": true,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "alien-tech"
+    },
+    {
+      "id": "10",
+      "name": "Zero-Point Energy Module",
+      "description": "A limitless power source derived from the vacuum of space!",
+      "price": 1499.99,
+      "imgSrc": "/images/energy-module.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "alien-tech"
+    },
+    {
+      "id": "11",
+      "name": "Graviton Manipulator",
+      "description": "Control gravity around you for ultimate convenience!",
+      "price": 1299.99,
+      "imgSrc": "/images/gravity.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "alien-tech"
+    },
+    {
+      "id": "12",
+      "name": "Neural Uplink Helmet",
+      "description": "Connect your mind directly to the intergalactic network!",
+      "price": 1799.99,
+      "imgSrc": "/images/helmet.png",
+      "bestseller": true,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "alien-tech"
+    },
+    {
+      "id": "13",
+      "name": "Self-Heating Ice Cream Cone",
+      "description": "An ice cream cone that heats itself. Perfect for melting your ice cream instantly!",
+      "price": 19.99,
+      "imgSrc": "/images/ice-cream-cone.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": true,
+      "categoryId": "useless-tech"
+    },
+    {
+      "id": "14",
+      "name": "Bluetooth-Enabled Rock",
+      "description": "A rock with Bluetooth capabilities. Connect it to your phone for absolutely no reason!",
+      "price": 49.99,
+      "imgSrc": "/images/rock.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "useless-tech"
+    },
+    {
+      "id": "15",
+      "name": "Solar-Powered Flashlight",
+      "description": "A flashlight that only works in sunlight. Completely useless at night!",
+      "price": 29.99,
+      "imgSrc": "/images/flashlight.png",
+      "bestseller": false,
+      "recommended": true,
+      "newArrival": false,
+      "categoryId": "useless-tech"
+    },
+    {
+      "id": "16",
+      "name": "Infinite Loading Screen",
+      "description": "A device that perpetually loads without ever displaying content.",
+      "price": 19.99,
+      "imgSrc": "/images/loading-screen.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "useless-tech"
+    },
+    {
+      "id": "17",
+      "name": "Invisible Remote",
+      "description": "A remote control so advanced, you can’t see or find it.",
+      "price": 29.99,
+      "imgSrc": "/images/invisible.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "useless-tech"
+    },
+    {
+      "id": "18",
+      "name": "Battery-Powered Solar Charger",
+      "description": "A solar charger that only works when charged by batteries.",
+      "price": 39.99,
+      "imgSrc": "/images/solar-panel.png",
+      "bestseller": false,
+      "recommended": false,
+      "newArrival": false,
+      "categoryId": "useless-tech"
     }
   ]
 }

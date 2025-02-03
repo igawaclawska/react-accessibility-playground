@@ -7,7 +7,7 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 import NotificationBadge from "./NotificationBadge";
 
 const TopNavigation = () => {
-  const { products, isLoading } = useContext(ProductsContext);
+  const { categories, isLoading } = useContext(ProductsContext);
   const { getTotalItems } = useContext(CartContext);
   const totalItems = getTotalItems();
 
@@ -28,7 +28,7 @@ const TopNavigation = () => {
         <NavigationLink to="/category/all-products">
           All Products
         </NavigationLink>
-        {products.map((category) => (
+        {categories.map((category) => (
           <NavigationLink key={category.id} to={`/category/${category.id}`}>
             {category.name}
           </NavigationLink>

@@ -10,9 +10,12 @@ const CategoryPage = () => {
 
   const filteredProducts = useMemo(() => {
     console.log("Filter Memo called");
-    return categoryId === "all-products"
-      ? products.flatMap((category) => category.products)
-      : products.find((category) => category.id === categoryId)?.products || [];
+
+    if (categoryId === "all-products") {
+      return products;
+    }
+
+    return products.filter((product) => product.categoryId === categoryId);
   }, [products, categoryId]);
 
   if (isLoading) {
@@ -37,7 +40,8 @@ const CategoryPage = () => {
             productName={product.name}
             price={product.price}
             imgSrc={product.imgSrc}
-            link={`/category/${categoryId}/product/${product.id}`}
+            category={formatCategoryName(product.categoryId)}
+            link={`/category/${product.categoryId}/product/${product.id}`}
           />
         ))}
       </div>

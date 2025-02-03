@@ -6,7 +6,7 @@ import styles from "./LandingPage.module.css";
 import ArrowRight from "../components/ArrowRight";
 
 const LandingPage = () => {
-  const { products, isLoading } = useContext(ProductsContext);
+  const { products, categories, isLoading } = useContext(ProductsContext);
   const bestsellersRef = useRef(null);
 
   const handleScrollToBestsellers = () => {
@@ -19,31 +19,37 @@ const LandingPage = () => {
   };
 
   const renderProducts = useCallback(
-    (filterFn, title, ref) => (
-      <div className={styles.section} ref={ref}>
-        <p className={styles.categoryName}>{title}</p>
-        <div
-          style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
-        >
-          {products.flatMap((category) => {
-            const { name } = category;
-            return category.products
-              .filter(filterFn)
-              .map((product) => (
+    (filterFn, title, ref) => {
+      const filteredProducts = products.filter(filterFn);
+
+      if (filteredProducts.length === 0) return null;
+
+      return (
+        <div className={styles.section} ref={ref}>
+          <p className={styles.categoryName}>{title}</p>
+          <div
+            style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
+          >
+            {filteredProducts.map((product) => {
+              const category = categories.find(
+                (cat) => cat.id === product.categoryId
+              );
+              return (
                 <ProductCard
                   key={product.id}
                   productName={product.name}
                   price={product.price}
                   imgSrc={product.imgSrc}
-                  category={name}
-                  link={`/category/${category.id}/product/${product.id}`}
+                  category={category?.name || "Unknown"}
+                  link={`/category/${product.categoryId}/product/${product.id}`}
                 />
-              ));
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-    ),
-    [products]
+      );
+    },
+    [products, categories]
   );
 
   if (isLoading) {

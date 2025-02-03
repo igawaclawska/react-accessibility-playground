@@ -17,23 +17,11 @@ const ProductPage = () => {
   const [addedQuantity, setAddedQuantity] = useState(1);
 
   const product = useMemo(() => {
-    if (categoryId === "all-products") {
-      for (const category of products) {
-        const foundProduct = category.products.find(
-          (prod) => prod.id === productId
-        );
-        if (foundProduct) return foundProduct;
-      }
-    } else {
-      const category = products.find((cat) => cat.id === categoryId);
-      if (category) {
-        return category.products.find((prod) => prod.id === productId);
-      }
-    }
-    return null;
+    return products.find(
+      (prod) => prod.id === productId && prod.categoryId === categoryId
+    );
   }, [categoryId, productId, products]);
 
-  // Debugging: Log the product object
   console.log("Product:", product);
 
   const handleQuantityChange = (productId, delta) => {
