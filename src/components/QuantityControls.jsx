@@ -1,6 +1,6 @@
 import Button from "./Button";
-import AddIcon from "./AddIcon";
-import SubtractIcon from "./SubtractIcon";
+import AddIcon from "./Icons/AddIcon";
+import SubtractIcon from "./Icons/SubtractIcon";
 import styles from "./QuantityControls.module.css";
 
 const QuantityControls = ({ quantity, handleQuantityChange }) => {

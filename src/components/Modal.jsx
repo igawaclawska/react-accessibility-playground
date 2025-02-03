@@ -1,6 +1,6 @@
 import Button from "./Button";
 import QuantityControls from "./QuantityControls";
-import ShoppingCartIcon from "./ShoppingCartIcon";
+import ShoppingCartIcon from "./Icons/ShoppingCartIcon";
 import styles from "./Modal.module.css";
 
 const Modal = ({

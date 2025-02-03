@@ -1,23 +1,16 @@
-import { useContext, useCallback, useRef } from "react";
+import { useContext, useCallback } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
+import useScrollTo from "../hooks/useScrollTo";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import ArrowRight from "../components/ArrowRight";
+import ArrowRight from "../components/Icons/ArrowRight";
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
   const { productsByCategory, categories, isLoading } =
     useContext(ProductsContext);
-  const bestsellersRef = useRef(null);
 
-  const handleScrollToBestsellers = () => {
-    if (bestsellersRef.current) {
-      window.scrollTo({
-        top: bestsellersRef.current.offsetTop - 50,
-        behavior: "smooth",
-      });
-    }
-  };
+  const { elementRef, scrollToElement } = useScrollTo(50);
 
   const renderProducts = useCallback(
     (filterFn, title, ref) => {
@@ -73,7 +66,7 @@ const LandingPage = () => {
           <p className={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>
-          <Button onClick={handleScrollToBestsellers}>
+          <Button onClick={scrollToElement}>
             Shop Now <ArrowRight />
           </Button>
         </div>
@@ -82,11 +75,9 @@ const LandingPage = () => {
       {renderProducts(
         (product) => product.bestseller,
         "Bestsellers",
-        bestsellersRef
+        elementRef
       )}
-
       {renderProducts((product) => product.recommended, "Recommended")}
-
       {renderProducts((product) => product.newArrival, "New Arrivals")}
     </div>
   );

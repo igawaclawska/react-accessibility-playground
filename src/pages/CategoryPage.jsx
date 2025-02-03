@@ -9,8 +9,6 @@ const CategoryPage = () => {
   const { categoryId } = useParams();
 
   const filteredProducts = useMemo(() => {
-    console.log("Filter Memo called");
-
     if (categoryId === "all-products") {
       return Object.values(productsByCategory).flat();
     }

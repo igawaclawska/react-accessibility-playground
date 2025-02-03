@@ -43,96 +43,88 @@ const Checkout = () => {
       <h2 className={styles.heading}>Checkout</h2>
       <OrderSummary cart={cart} totalPrice={totalPrice} />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className={styles.formGroup}>
-          <Input
-            label="Name"
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            errorMessage={errors.name}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="Address"
-            type="text"
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            errorMessage={errors.address}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="Email"
-            type="text"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            helperText={"Use a valid email format (e.g., name@example.com)"}
-            errorMessage={errors.email}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="City"
-            type="text"
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            errorMessage={errors.city}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="ZIP Code"
-            type="number"
-            id="zip"
-            name="zip"
-            value={formData.zip}
-            onChange={handleChange}
-            errorMessage={errors.zip}
-            helperText={"Please use a 5-digit zip code (e.g., 12345)"}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="Card Number"
-            type="number"
-            id="cardNumber"
-            name="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleChange}
-            errorMessage={errors.cardNumber}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="Expiration Date"
-            type="date"
-            id="expirationDate"
-            name="expirationDate"
-            value={formData.expirationDate}
-            onChange={handleChange}
-            errorMessage={errors.expirationDate}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <Input
-            label="CVV"
-            type="number"
-            id="cvv"
-            name="cvv"
-            value={formData.cvv}
-            onChange={handleChange}
-            errorMessage={errors.cvv}
-          />
-        </div>
+        <Input
+          label="Name"
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          errorMessage={errors.name}
+        />
+
+        <Input
+          label="Address"
+          type="text"
+          id="address"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          errorMessage={errors.address}
+        />
+
+        <Input
+          label="Email"
+          type="text"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          helperText={"Use a valid email format (e.g., name@example.com)"}
+          errorMessage={errors.email}
+        />
+
+        <Input
+          label="City"
+          type="text"
+          id="city"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+          errorMessage={errors.city}
+        />
+
+        <Input
+          label="ZIP Code"
+          type="number"
+          id="zip"
+          name="zip"
+          value={formData.zip}
+          onChange={handleChange}
+          errorMessage={errors.zip}
+          helperText={"Please use a 5-digit zip code (e.g., 12345)"}
+        />
+
+        <Input
+          label="Card Number"
+          type="number"
+          id="cardNumber"
+          name="cardNumber"
+          value={formData.cardNumber}
+          onChange={handleChange}
+          errorMessage={errors.cardNumber}
+        />
+
+        <Input
+          label="Expiration Date"
+          type="date"
+          id="expirationDate"
+          name="expirationDate"
+          value={formData.expirationDate}
+          onChange={handleChange}
+          errorMessage={errors.expirationDate}
+        />
+
+        <Input
+          label="CVV"
+          type="number"
+          id="cvv"
+          name="cvv"
+          value={formData.cvv}
+          onChange={handleChange}
+          errorMessage={errors.cvv}
+        />
+
         <Button type="submit">Buy Now</Button>
       </form>
     </div>

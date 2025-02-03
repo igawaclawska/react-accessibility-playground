@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 import Button from "../components/Button";
-import DeleteIcon from "../components/DeleteIcon";
+import DeleteIcon from "../components/icons/DeleteIcon";
 import QuantityControls from "../components/QuantityControls";
-import ArrowRight from "../components/ArrowRight";
+import ArrowRight from "../components/Icons/ArrowRight";
 import styles from "./Cart.module.css";
 
 const Cart = () => {

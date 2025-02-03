@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
 import NavigationLink from "./NavigationLink";
-import ShoppingCartIcon from "./ShoppingCartIcon";
+import ShoppingCartIcon from "./Icons/ShoppingCartIcon";
 import NotificationBadge from "./NotificationBadge";
 import styles from "./TopNavigation.module.css";
 

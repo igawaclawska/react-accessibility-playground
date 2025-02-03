@@ -6,7 +6,7 @@ import { CartContext } from "../contexts/CartContext";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
 import styles from "./ProductPage.module.css";
-import ShoppingCartIcon from "../components/ShoppingCartIcon";
+import ShoppingCartIcon from "../components/Icons/ShoppingCartIcon";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
@@ -20,8 +20,6 @@ const ProductPage = () => {
     const categoryProducts = productsByCategory[categoryId] || [];
     return categoryProducts.find((prod) => prod.id === productId);
   }, [categoryId, productId, productsByCategory]);
-
-  console.log("Product:", product);
 
   const handleProductQuantityChange = (productId, delta) => {
     setAddedQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
