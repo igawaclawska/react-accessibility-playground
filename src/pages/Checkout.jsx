@@ -39,7 +39,7 @@ const Checkout = () => {
   console.log("Checkout cart:", cart);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.pageContainer}>
       <h2 className={styles.heading}>Checkout</h2>
       <OrderSummary cart={cart} totalPrice={totalPrice} />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

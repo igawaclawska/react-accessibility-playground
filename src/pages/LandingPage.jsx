@@ -50,11 +50,11 @@ const LandingPage = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.pageContainer}>Loading...</div>;
   }
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <div className={styles.heroSection}>
         <img
           src="/images/headphones.png"

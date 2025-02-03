@@ -11,7 +11,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className={styles.footer}>
+    <div className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.section}>
           <h4>Contact Us</h4>
@@ -106,7 +106,7 @@ const Footer = () => {
         </div>
       </div>
       <p>&copy; 2023 Webshop. All rights reserved.</p>
-    </footer>
+    </div>
   );
 };
 

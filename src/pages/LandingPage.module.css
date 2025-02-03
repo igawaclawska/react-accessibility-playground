@@ -1,3 +1,7 @@
+.pageContainer {
+  min-height: "calc(100vh - 200px)";
+}
+
 .heroSection {
   display: flex;
   align-items: center;

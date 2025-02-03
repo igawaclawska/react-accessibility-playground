@@ -1,6 +1,7 @@
-.container {
+.pageContainer {
   padding: 2em;
   text-align: center;
+  min-height: calc(100vh - 200px);
 }
 
 .heading {

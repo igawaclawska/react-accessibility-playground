@@ -43,11 +43,11 @@ const ProductPage = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.productPage}>Loading...</div>;
   }
 
   if (!product) {
-    return <div>Product not found.</div>;
+    return <div className={styles.productPage}>Product not found.</div>;
   }
 
   return (

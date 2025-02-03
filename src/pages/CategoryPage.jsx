@@ -17,11 +17,11 @@ const CategoryPage = () => {
   }, [productsByCategory, categoryId]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.pageContainer}>Loading...</div>;
   }
 
   if (filteredProducts.length === 0) {
-    return <div>No products found.</div>;
+    return <div className={styles.pageContainer}>No products found.</div>;
   }
 
   const formatCategoryName = (id) => {
@@ -29,7 +29,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <div>
+    <div className={styles.pageContainer}>
       <p className={styles.categoryName}>{formatCategoryName(categoryId)}</p>
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
