@@ -11,6 +11,8 @@ const Input = ({
   helperText,
   errorMessage,
 }) => {
+  const helperId = helperText ? `${id}-helper` : "";
+  const errorId = errorMessage ? `${id}-error` : "";
   return (
     <div className={styles.inputContainer}>
       <label className={styles.label} htmlFor={id}>
@@ -24,9 +26,25 @@ const Input = ({
         onChange={onChange}
         className={styles.input}
         required={isRequired}
+        aria-required={isRequired}
+        aria-invalid={Boolean(errorMessage)}
+        aria-describedby={`${helperId} ${errorId}`}
       />
-      {helperText && <p className={styles.helperText}>{helperText}</p>}
-      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+
+      <div
+        id={helperId}
+        className={helperText ? styles.helperText : styles.invisible}
+      >
+        {helperText ? helperText : ""}
+      </div>
+
+      <div
+        id={errorId}
+        aria-live="polite"
+        className={errorMessage ? styles.errorMessage : styles.invisible}
+      >
+        {errorMessage ? errorMessage : ""}
+      </div>
     </div>
   );
 };
