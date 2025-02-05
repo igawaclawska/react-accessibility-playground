@@ -29,7 +29,7 @@ const Checkout = () => {
   return (
     <main className={styles.pageContainer}>
       <title>Checkout</title>
-      <h2 className={styles.heading}>Checkout</h2>
+      <h1 className={styles.heading}>Checkout</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Contact Details</legend>

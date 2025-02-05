@@ -18,7 +18,7 @@ const Modal = ({
       {showModal && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
-            <p>Item(s) have been added to the cart:</p>
+            <h1>Item(s) have been added to the cart:</h1>
             <div className={styles.itemList}>
               <div className={styles.item}>
                 <img
