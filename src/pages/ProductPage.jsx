@@ -57,11 +57,7 @@ const ProductPage = () => {
         <h1>{product.name}</h1>
       </header>
       <div className={styles.productDetails}>
-        <img
-          src={product.imgSrc}
-          alt={product.name}
-          className={styles.productImage}
-        />
+        <img src={product.imgSrc} alt="" className={styles.productImage} />
         <div className={styles.productInfo}>
           <p className={styles.productDescription}>{product.description}</p>
           <p className={styles.productPrice}>${product.price.toFixed(2)}</p>

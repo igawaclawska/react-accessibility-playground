@@ -18,6 +18,7 @@
 .cartItem {
   display: flex;
   justify-content: space-between;
+  gap: 1.5rem;
   align-items: center;
   width: 80%;
   padding: 1em;
@@ -42,4 +43,21 @@
 .itemPrice {
   font-size: 1em;
   color: #888;
+}
+
+.totalPrice {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

@@ -41,9 +41,11 @@ const Input = ({
       <div
         id={errorId}
         aria-live="polite"
-        className={errorMessage ? styles.errorMessage : styles.invisible}
+        className={styles.errorMessageWrapper}
       >
-        {errorMessage ? errorMessage : ""}
+        <span className={styles.errorMessage}>
+          {errorMessage ? errorMessage : ""}
+        </span>
       </div>
     </div>
   );

@@ -6,11 +6,7 @@ const OrderSummary = ({ cart, totalPrice }) => {
       <h3 className={styles.summaryHeading}>Order Summary</h3>
       {cart.map((item) => (
         <div key={item.product.id} className={styles.summaryItem}>
-          <img
-            src={item.product.imgSrc}
-            alt={item.name}
-            className={styles.itemImage}
-          />
+          <img src={item.product.imgSrc} alt="" className={styles.itemImage} />
           <div className={styles.itemDetails}>
             <span className={styles.itemName}>{item.name}</span>
             <span className={styles.itemQuantity}>

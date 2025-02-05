@@ -9,20 +9,25 @@ const Modal = ({ showModal, handleGoToCart, handleCloseModal, product }) => {
       {showModal && (
         <FocusLock>
           <div className={styles.modalOverlay}>
-            <div role="dialog" className={styles.modal}>
-              <AutoFocusInside>
-                <h1>{product.name} have been added to the cart!</h1>
-              </AutoFocusInside>
-              <div className={styles.modalButtons}>
-                <Button variant="secondary" onClick={handleCloseModal}>
-                  Continue shopping
-                </Button>
-                <Button aria-label="Go to Cart" onClick={handleGoToCart}>
-                  <ShoppingCartIcon />
-                  Go to Cart
-                </Button>
+            <AutoFocusInside>
+              <div role="dialog" className={styles.modal}>
+                <h1>{`${product.name} has been added to the cart!`}</h1>
+
+                <div className={styles.modalButtons}>
+                  <Button variant="secondary" onClick={handleCloseModal}>
+                    Continue shopping
+                  </Button>
+                  <Button
+                    aria-hidden="true"
+                    aria-label="Go to Cart"
+                    onClick={handleGoToCart}
+                  >
+                    <ShoppingCartIcon />
+                    Go to Cart
+                  </Button>
+                </div>
               </div>
-            </div>
+            </AutoFocusInside>
           </div>
         </FocusLock>
       )}

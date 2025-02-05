@@ -26,6 +26,10 @@
   display: none;
 }
 
+.errorMessagWrapper {
+  height: 0px;
+}
+
 .errorMessage {
   margin-top: 0.5em;
   font-size: 0.875em;
