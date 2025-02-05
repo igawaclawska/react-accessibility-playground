@@ -5,8 +5,14 @@ import ProductCard from "../components/ProductCard";
 import styles from "./CategoryPage.module.css";
 
 const CategoryPage = () => {
-  const { productsByCategory, isLoading } = useContext(ProductsContext);
+  const { productsByCategory, isLoading, categories } =
+    useContext(ProductsContext);
   const { categoryId } = useParams();
+
+  const categoryName = useMemo(() => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category ? category.name : "All Products";
+  }, [categoryId]);
 
   const filteredProducts = useMemo(() => {
     if (categoryId === "all-products") {
@@ -33,23 +39,17 @@ const CategoryPage = () => {
     );
   }
 
-  const formatCategoryName = (id) => {
-    return id.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
-  };
-
   return (
     <main className={styles.pageContainer}>
-      <title>{formatCategoryName(categoryId)}</title>
-      <h1 className={styles.categoryName}>{formatCategoryName(categoryId)}</h1>
+      <title>{categoryName}</title>
+      <h1 className={styles.categoryName}>{categoryName}</h1>
       <div className={styles.productList}>
         {filteredProducts.map((product) => (
           <ProductCard
+            {...product}
             key={product.id}
-            productName={product.name}
             headingLevel="h2"
-            price={product.price}
-            imgSrc={product.imgSrc}
-            category={formatCategoryName(product.categoryId)}
+            category={categoryId === "all-products" ? categoryName : ""}
             link={`/category/${product.categoryId}/product/${product.id}`}
           />
         ))}

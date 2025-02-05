@@ -16,27 +16,9 @@
   border-radius: 8px;
   max-width: 500px;
   width: 100%;
-}
-
-.itemList {
-  margin-bottom: 1em;
-}
-
-.item {
   display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
-.itemImage {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-
-.totalPrice {
-  margin-top: 0.5em;
-  font-weight: bold;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .modalButtons {

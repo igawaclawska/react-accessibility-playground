@@ -34,10 +34,8 @@ const LandingPage = () => {
               return (
                 <ProductCard
                   key={product.id}
-                  productName={product.name}
+                  {...product}
                   headingLevel="h3"
-                  price={product.price}
-                  imgSrc={product.imgSrc}
                   category={category?.name || "Unknown"}
                   link={`/category/${product.categoryId}/product/${product.id}`}
                 />
@@ -51,18 +49,18 @@ const LandingPage = () => {
   );
 
   if (isLoading) {
-    return <div className={styles.pageContainer}>Loading...</div>;
+    return (
+      <main className={styles.pageContainer}>
+        <h1>Loading...</h1>
+      </main>
+    );
   }
 
   return (
     <main className={styles.pageContainer}>
       <title>Home</title>
       <div className={styles.heroSection}>
-        <img
-          src="/images/headphones.png"
-          alt="Hero"
-          className={styles.heroImage}
-        />
+        <img src="/images/headphones.png" alt="" className={styles.heroImage} />
         <div className={styles.heroText}>
           <h1 className={styles.heroHeading}>Welcome to Our Store</h1>
           <p className={styles.heroSubheading}>

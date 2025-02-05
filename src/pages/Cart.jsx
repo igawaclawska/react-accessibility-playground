@@ -41,13 +41,14 @@ const Cart = () => {
               ${item.product.price.toFixed(2)}
             </span>
             <QuantityControls
-              quantity={item.quantity}
+              {...item}
               handleQuantityChange={(delta) =>
                 handleQuantityChange(item.product.id, delta)
               }
             />
             <Button
               variant="secondary"
+              ariaLabel={`Remove ${item.product.name} from cart`}
               onClick={() => handleRemoveItem(item.product.id)}
             >
               <DeleteIcon />

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
 const ProductCard = ({
-  productName,
+  name,
   imgSrc,
   link,
   price,
@@ -14,14 +14,18 @@ const ProductCard = ({
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={imgSrc} alt={productName} className={styles.image} />
+        <img src={imgSrc} alt="" className={styles.image} />
         {category && <div className={styles.category}>{category}</div>}
       </div>
       <div className={styles.content}>
-        <HeadingTag className={styles.title}>{productName}</HeadingTag>
+        <HeadingTag className={styles.title}>{name}</HeadingTag>
         <p className={styles.price}>${price.toFixed(2)}</p>
-        <Link to={link} className={styles.link}>
-          View Product
+        <Link
+          aria-label={`View product ${name}`}
+          to={link}
+          className={styles.link}
+        >
+          <span aria-hidden="true">View Product</span>
         </Link>
       </div>
     </div>

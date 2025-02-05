@@ -12,30 +12,23 @@ const ProductPage = () => {
   const { categoryId, productId } = useParams();
   const navigate = useNavigate();
   const { productsByCategory, isLoading } = useContext(ProductsContext);
-  const { addToCart, handleQuantityChange } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   const [showModal, setShowModal] = useState(false);
-  const [addedQuantity, setAddedQuantity] = useState(1);
 
   const product = useMemo(() => {
     const categoryProducts = productsByCategory[categoryId] || [];
     return categoryProducts.find((prod) => prod.id === productId);
   }, [categoryId, productId, productsByCategory]);
 
-  const handleProductQuantityChange = (productId, delta) => {
-    setAddedQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
-    handleQuantityChange(productId, delta);
-  };
-
   const handleAddToCart = () => {
     if (product) {
-      addToCart(product, addedQuantity);
+      addToCart(product, 1);
       setShowModal(true);
     }
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setAddedQuantity(1);
   };
 
   const handleGoToCart = () => {
@@ -72,7 +65,7 @@ const ProductPage = () => {
         <div className={styles.productInfo}>
           <p className={styles.productDescription}>{product.description}</p>
           <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
-          <Button onClick={handleAddToCart}>
+          <Button hasPopup={"dialog"} onClick={handleAddToCart}>
             <ShoppingCartIcon />
             Add to Cart
           </Button>
@@ -84,8 +77,6 @@ const ProductPage = () => {
         handleGoToCart={handleGoToCart}
         handleCloseModal={handleCloseModal}
         product={product}
-        addedQuantity={addedQuantity}
-        handleQuantityChange={handleProductQuantityChange}
       />
     </main>
   );
