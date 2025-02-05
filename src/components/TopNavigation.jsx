@@ -13,16 +13,16 @@ const TopNavigation = () => {
 
   if (isLoading) {
     return (
-      <div className={styles.nav}>
+      <nav className={styles.nav}>
         <ul className={styles.ul}>
           <li>Loading...</li>
         </ul>
-      </div>
+      </nav>
     );
   }
 
   return (
-    <div className={styles.nav}>
+    <nav className={styles.nav}>
       <ul className={styles.ul}>
         <NavigationLink to="/"> Home</NavigationLink>
         <NavigationLink to="/category/all-products">
@@ -39,7 +39,7 @@ const TopNavigation = () => {
           {totalItems > 0 && <NotificationBadge count={totalItems} />}
         </NavigationLink>
       </ul>
-    </div>
+    </nav>
   );
 };
 

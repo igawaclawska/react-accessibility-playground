@@ -22,7 +22,7 @@ const LandingPage = () => {
       if (filteredProducts.length === 0) return null;
 
       return (
-        <div className={styles.section} ref={ref}>
+        <section className={styles.section} ref={ref}>
           <p className={styles.categoryName}>{title}</p>
           <div
             style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
@@ -43,7 +43,7 @@ const LandingPage = () => {
               );
             })}
           </div>
-        </div>
+        </section>
       );
     },
     [categories, productsByCategory]
@@ -54,12 +54,12 @@ const LandingPage = () => {
   }
 
   return (
-    <div className={styles.pageContainer}>
+    <main className={styles.pageContainer}>
       <title>Home</title>
       <div className={styles.heroSection}>
         <img
           src="/images/headphones.png"
-          // alt="Hero"
+          alt="Hero"
           className={styles.heroImage}
         />
         <div className={styles.heroText}>
@@ -80,7 +80,7 @@ const LandingPage = () => {
       )}
       {renderProducts((product) => product.recommended, "Recommended")}
       {renderProducts((product) => product.newArrival, "New Arrivals")}
-    </div>
+    </main>
   );
 };
 

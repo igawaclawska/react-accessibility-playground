@@ -17,14 +17,14 @@ const CategoryPage = () => {
   }, [productsByCategory, categoryId]);
 
   if (isLoading) {
-    return <div className={styles.pageContainer}>Loading...</div>;
+    return <main className={styles.pageContainer}>Loading...</main>;
   }
 
   if (filteredProducts.length === 0) {
     return (
-      <div className={styles.pageContainer}>
+      <main className={styles.pageContainer}>
         <title>Product page</title>No products found.
-      </div>
+      </main>
     );
   }
 
@@ -33,7 +33,7 @@ const CategoryPage = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
+    <main className={styles.pageContainer}>
       <title>{formatCategoryName(categoryId)}</title>
       <p className={styles.categoryName}>{formatCategoryName(categoryId)}</p>
       <div className={styles.productList}>
@@ -48,7 +48,7 @@ const CategoryPage = () => {
           />
         ))}
       </div>
-    </div>
+    </main>
   );
 };
 

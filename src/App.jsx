@@ -1,6 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { CartProvider } from "./contexts/CartContext";
 import { ProductsProvider } from "./contexts/ProductsContext";
+import Header from "./components/Header";
 import TopNavigation from "./components/TopNavigation";
 import AppRoutes from "./AppRoutes";
 import Footer from "./components/Footer";
@@ -11,7 +12,9 @@ const App = () => {
     <ProductsProvider>
       <CartProvider>
         <Router>
-          <TopNavigation />
+          <Header>
+            <TopNavigation />
+          </Header>
           <AppRoutes />
           <Footer />
         </Router>

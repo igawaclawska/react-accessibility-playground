@@ -46,7 +46,7 @@ export default [
       "jsx-a11y/alt-text": "error",
       "react/prop-types": "off",
       "react-refresh/only-export-components": "off",
-      // "no-undef": "off",
+      "no-undef": "off",
     },
   },
 ];

@@ -43,19 +43,19 @@ const ProductPage = () => {
   };
 
   if (isLoading) {
-    return <div className={styles.productPage}>Loading...</div>;
+    return <main className={styles.productPage}>Loading...</main>;
   }
 
   if (!product) {
     return (
-      <div className={styles.productPage}>
+      <main className={styles.productPage}>
         <title>Product not found</title>Product not found.
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className={styles.productPage}>
+    <main className={styles.productPage}>
       <title>{product.name}</title>
       <header className={styles.productHeader}>
         <Link to={`/category/${categoryId}`} className={styles.backLink}>
@@ -87,7 +87,7 @@ const ProductPage = () => {
         addedQuantity={addedQuantity}
         handleQuantityChange={handleProductQuantityChange}
       />
-    </div>
+    </main>
   );
 };
 

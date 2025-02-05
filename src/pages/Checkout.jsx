@@ -39,7 +39,7 @@ const Checkout = () => {
   console.log("Checkout cart:", cart);
 
   return (
-    <div className={styles.pageContainer}>
+    <main className={styles.pageContainer}>
       <title>Checkout</title>
       <h2 className={styles.heading}>Checkout</h2>
       <OrderSummary cart={cart} totalPrice={totalPrice} />
@@ -128,7 +128,7 @@ const Checkout = () => {
 
         <Button type="submit">Buy Now</Button>
       </form>
-    </div>
+    </main>
   );
 };
 
