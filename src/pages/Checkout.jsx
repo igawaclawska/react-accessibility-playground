@@ -40,6 +40,7 @@ const Checkout = () => {
 
   return (
     <div className={styles.pageContainer}>
+      <title>Checkout</title>
       <h2 className={styles.heading}>Checkout</h2>
       <OrderSummary cart={cart} totalPrice={totalPrice} />
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>

@@ -55,6 +55,7 @@ const LandingPage = () => {
 
   return (
     <div className={styles.pageContainer}>
+      <title>Home</title>
       <div className={styles.heroSection}>
         <img
           src="/images/headphones.png"

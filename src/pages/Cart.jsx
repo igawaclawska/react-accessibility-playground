@@ -17,12 +17,17 @@ const Cart = () => {
   };
 
   if (cart.length === 0) {
-    return <div className={styles.pageContainer}>Your cart is empty.</div>;
+    return (
+      <div className={styles.pageContainer}>
+        <title>Your Cart</title>Your cart is empty.
+      </div>
+    );
   }
 
   return (
     <div className={styles.pageContainer}>
-      <h2 className={styles.heading}>Shopping Cart</h2>
+      <title>Your Cart</title>
+      <h2 className={styles.heading}>Your Cart</h2>
       <div className={styles.cartItems}>
         {cart.map((item) => (
           <div key={item.product.id} className={styles.cartItem}>

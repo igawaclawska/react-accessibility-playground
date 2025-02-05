@@ -47,11 +47,16 @@ const ProductPage = () => {
   }
 
   if (!product) {
-    return <div className={styles.productPage}>Product not found.</div>;
+    return (
+      <div className={styles.productPage}>
+        <title>Product not found</title>Product not found.
+      </div>
+    );
   }
 
   return (
     <div className={styles.productPage}>
+      <title>{product.name}</title>
       <header className={styles.productHeader}>
         <Link to={`/category/${categoryId}`} className={styles.backLink}>
           Back to Category

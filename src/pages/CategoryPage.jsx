@@ -21,7 +21,11 @@ const CategoryPage = () => {
   }
 
   if (filteredProducts.length === 0) {
-    return <div className={styles.pageContainer}>No products found.</div>;
+    return (
+      <div className={styles.pageContainer}>
+        <title>Product page</title>No products found.
+      </div>
+    );
   }
 
   const formatCategoryName = (id) => {
@@ -30,6 +34,7 @@ const CategoryPage = () => {
 
   return (
     <div className={styles.pageContainer}>
+      <title>{formatCategoryName(categoryId)}</title>
       <p className={styles.categoryName}>{formatCategoryName(categoryId)}</p>
       <div className={styles.productList}>
         {filteredProducts.map((product) => (

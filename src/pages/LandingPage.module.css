@@ -20,11 +20,14 @@
 .heroText {
   max-width: 50%;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .heroHeading {
   font-size: 2.5em;
-  margin-bottom: 0.5em;
 }
 
 .heroSubheading {
