@@ -23,7 +23,7 @@ const LandingPage = () => {
 
       return (
         <section className={styles.section} ref={ref}>
-          <p className={styles.categoryName}>{title}</p>
+          <h2 className={styles.categoryName}>{title}</h2>
           <div
             style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
           >
@@ -35,6 +35,7 @@ const LandingPage = () => {
                 <ProductCard
                   key={product.id}
                   productName={product.name}
+                  headingLevel="h3"
                   price={product.price}
                   imgSrc={product.imgSrc}
                   category={category?.name || "Unknown"}

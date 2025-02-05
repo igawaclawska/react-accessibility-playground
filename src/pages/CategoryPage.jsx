@@ -46,6 +46,7 @@ const CategoryPage = () => {
           <ProductCard
             key={product.id}
             productName={product.name}
+            headingLevel="h2"
             price={product.price}
             imgSrc={product.imgSrc}
             category={formatCategoryName(product.categoryId)}
