@@ -43,17 +43,16 @@ const CategoryPage = () => {
     <main className={styles.pageContainer}>
       <title>{categoryName}</title>
       <h1 className={styles.categoryName}>{categoryName}</h1>
-      <div className={styles.productList}>
+      <ul className={styles.productList}>
         {filteredProducts.map((product) => (
           <ProductCard
             {...product}
             key={product.id}
             headingLevel="h2"
-            category={categoryId === "all-products" ? categoryName : ""}
             link={`/category/${product.categoryId}/product/${product.id}`}
           />
         ))}
-      </div>
+      </ul>
     </main>
   );
 };

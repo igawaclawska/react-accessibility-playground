@@ -1,21 +1,13 @@
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
-const ProductCard = ({
-  name,
-  imgSrc,
-  link,
-  price,
-  category,
-  headingLevel = "h3",
-}) => {
+const ProductCard = ({ name, imgSrc, link, price, headingLevel = "h3" }) => {
   const HeadingTag = headingLevel;
 
   return (
-    <div className={styles.card}>
+    <li tabIndex={0} className={styles.card}>
       <div className={styles.imageContainer}>
         <img src={imgSrc} alt="" className={styles.image} />
-        {category && <div className={styles.category}>{category}</div>}
       </div>
       <div className={styles.content}>
         <HeadingTag className={styles.title}>{name}</HeadingTag>
@@ -28,7 +20,7 @@ const ProductCard = ({
           <span aria-hidden="true">View Product</span>
         </Link>
       </div>
-    </div>
+    </li>
   );
 };
 

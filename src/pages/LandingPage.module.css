@@ -44,3 +44,9 @@
 .section {
   margin-bottom: 2em;
 }
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

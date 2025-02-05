@@ -24,24 +24,18 @@ const LandingPage = () => {
       return (
         <section className={styles.section} ref={ref}>
           <h2 className={styles.categoryName}>{title}</h2>
-          <div
-            style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
-          >
+          <ul className={styles.list}>
             {filteredProducts.map((product) => {
-              const category = categories.find(
-                (cat) => cat.id === product.categoryId
-              );
               return (
                 <ProductCard
                   key={product.id}
                   {...product}
                   headingLevel="h3"
-                  category={category?.name || "Unknown"}
                   link={`/category/${product.categoryId}/product/${product.id}`}
                 />
               );
             })}
-          </div>
+          </ul>
         </section>
       );
     },
