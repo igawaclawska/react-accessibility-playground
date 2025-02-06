@@ -47,6 +47,9 @@ const Cart = () => {
     <div className={styles.pageContainer}>
       <title>Your Cart</title>
       <h2 className={styles.heading}>Your Cart</h2>
+      <div className={styles.totalPrice}>
+        <h2>Total Price: ${totalPrice}</h2>
+      </div>
       <div className={styles.totalPrice}></div>
       <div className={styles.cartItems}>
         {cart.map((item) => {
