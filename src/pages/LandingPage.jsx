@@ -44,14 +44,14 @@ const LandingPage = () => {
 
   if (isLoading) {
     return (
-      <main className={styles.pageContainer}>
+      <div className={styles.pageContainer}>
         <h1>Loading...</h1>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className={styles.pageContainer}>
+    <div className={styles.pageContainer}>
       <title>Home</title>
       <div className={styles.heroSection}>
         <img src="/images/headphones.png" alt="" className={styles.heroImage} />
@@ -73,7 +73,7 @@ const LandingPage = () => {
       )}
       {renderProducts((product) => product.recommended, "Recommended")}
       {renderProducts((product) => product.newArrival, "New Arrivals")}
-    </main>
+    </div>
   );
 };
 

@@ -36,19 +36,19 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <main className={styles.pageContainer}>
+      <div className={styles.pageContainer}>
         <title>Your Cart</title>
         <h1>Your cart is empty.</h1>
         <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
           {removedProduct &&
             `${removedProduct} has been removed from the cart. Your cart is now empty.`}
         </div>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className={styles.pageContainer}>
+    <div className={styles.pageContainer}>
       <title>Your Cart</title>
       <h1 className={styles.heading}>Your Cart</h1>
       <div className={styles.totalPrice}>
@@ -95,7 +95,7 @@ const Cart = () => {
       <Button onClick={handleCheckout}>
         Proceed to Checkout <ArrowRight />
       </Button>
-    </main>
+    </div>
   );
 };
 

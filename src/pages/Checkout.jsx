@@ -27,7 +27,7 @@ const Checkout = () => {
   };
 
   return (
-    <main className={styles.pageContainer}>
+    <div className={styles.pageContainer}>
       <title>Checkout</title>
       <h1 className={styles.heading}>Checkout</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -88,7 +88,7 @@ const Checkout = () => {
         </fieldset>
         <Button type="submit">Buy Now</Button>
       </form>
-    </main>
+    </div>
   );
 };
 

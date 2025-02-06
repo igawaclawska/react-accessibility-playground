@@ -24,23 +24,23 @@ const CategoryPage = () => {
 
   if (isLoading) {
     return (
-      <main className={styles.pageContainer}>
+      <div className={styles.pageContainer}>
         <h1>Loading...</h1>
-      </main>
+      </div>
     );
   }
 
   if (filteredProducts.length === 0) {
     return (
-      <main className={styles.pageContainer}>
+      <div className={styles.pageContainer}>
         <title>Product page</title>
         <h1>No products found.</h1>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className={styles.pageContainer}>
+    <div className={styles.pageContainer}>
       <title>{categoryName}</title>
       <h1 className={styles.categoryName}>{categoryName}</h1>
       <ul className={styles.productList}>
@@ -53,7 +53,7 @@ const CategoryPage = () => {
           />
         ))}
       </ul>
-    </main>
+    </div>
   );
 };
 
