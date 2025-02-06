@@ -39,10 +39,6 @@ const Cart = () => {
       <div className={styles.pageContainer}>
         <title>Your Cart</title>
         <h2>Your cart is empty.</h2>
-        <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
-          {removedProduct &&
-            `${removedProduct} has been removed from the cart. Your cart is now empty.`}
-        </div>
       </div>
     );
   }
@@ -51,12 +47,7 @@ const Cart = () => {
     <div className={styles.pageContainer}>
       <title>Your Cart</title>
       <h2 className={styles.heading}>Your Cart</h2>
-      <div className={styles.totalPrice}>
-        <h2 aria-live="polite">Total Price: ${totalPrice}</h2>
-      </div>
-      <div aria-live="polite" className={styles.srOnly}>
-        {removedProduct && `${removedProduct} has been removed from the cart.`}
-      </div>
+      <div className={styles.totalPrice}></div>
       <div className={styles.cartItems}>
         {cart.map((item) => {
           const itemTotalPrice = (item.product.price * item.quantity).toFixed(
@@ -78,7 +69,6 @@ const Cart = () => {
               />
               <Button
                 variant="secondary"
-                ariaLabel={`Remove ${item.product.name} from cart`}
                 onClick={() => handleRemove(item.product.id)}
               >
                 <DeleteIcon />
