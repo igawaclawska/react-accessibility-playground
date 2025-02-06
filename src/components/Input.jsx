@@ -25,10 +25,6 @@ const Input = ({
         value={value}
         onChange={onChange}
         className={styles.input}
-        required={isRequired}
-        aria-required={isRequired}
-        aria-invalid={Boolean(errorMessage)}
-        aria-describedby={`${helperId} ${errorId}`}
       />
 
       <div
@@ -38,11 +34,7 @@ const Input = ({
         {helperText ? helperText : ""}
       </div>
 
-      <div
-        id={errorId}
-        aria-live="polite"
-        className={styles.errorMessageWrapper}
-      >
+      <div id={errorId} className={styles.errorMessageWrapper}>
         <span className={styles.errorMessage}>
           {errorMessage ? errorMessage : ""}
         </span>

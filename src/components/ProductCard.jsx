@@ -12,12 +12,8 @@ const ProductCard = ({ name, imgSrc, link, price, headingLevel = "h3" }) => {
       <div className={styles.content}>
         <HeadingTag className={styles.title}>{name}</HeadingTag>
         <p className={styles.price}>${price.toFixed(2)}</p>
-        <Link
-          aria-label={`View product ${name}`}
-          to={link}
-          className={styles.link}
-        >
-          <span aria-hidden="true">View Product</span>
+        <Link to={link} className={styles.link}>
+          <span>View Product</span>
         </Link>
       </div>
     </li>

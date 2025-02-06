@@ -17,11 +17,7 @@ const Modal = ({ showModal, handleGoToCart, handleCloseModal, product }) => {
                   <Button variant="secondary" onClick={handleCloseModal}>
                     Continue shopping
                   </Button>
-                  <Button
-                    aria-hidden="true"
-                    aria-label="Go to Cart"
-                    onClick={handleGoToCart}
-                  >
+                  <Button onClick={handleGoToCart}>
                     <ShoppingCartIcon />
                     Go to Cart
                   </Button>
