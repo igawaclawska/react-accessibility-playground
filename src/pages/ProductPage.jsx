@@ -54,10 +54,10 @@ const ProductPage = () => {
         <Link to={`/category/${categoryId}`} className={styles.backLink}>
           Back to Category
         </Link>
-        <h1>{product.name}</h1>
+        <h2>{product.name}</h2>
       </header>
       <div className={styles.productDetails}>
-        <img src={product.imgSrc} alt="" className={styles.productImage} />
+        <img src={product.imgSrc} className={styles.productImage} />
         <div className={styles.productInfo}>
           <p className={styles.productDescription}>{product.description}</p>
           <p className={styles.productPrice}>${product.price.toFixed(2)}</p>

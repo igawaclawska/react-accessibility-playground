@@ -7,7 +7,7 @@ const ProductCard = ({ name, imgSrc, link, price, headingLevel = "h3" }) => {
   return (
     <li className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={imgSrc} alt="" className={styles.image} />
+        <img src={imgSrc} className={styles.image} />
       </div>
       <div className={styles.content}>
         <HeadingTag className={styles.title}>{name}</HeadingTag>

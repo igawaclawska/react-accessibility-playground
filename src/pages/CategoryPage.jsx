@@ -25,7 +25,7 @@ const CategoryPage = () => {
   if (isLoading) {
     return (
       <div className={styles.pageContainer}>
-        <h1>Loading...</h1>
+        <h2>Loading...</h2>
       </div>
     );
   }
@@ -34,7 +34,7 @@ const CategoryPage = () => {
     return (
       <div className={styles.pageContainer}>
         <title>Product page</title>
-        <h1>No products found.</h1>
+        <h2>No products found.</h2>
       </div>
     );
   }
@@ -42,8 +42,8 @@ const CategoryPage = () => {
   return (
     <div className={styles.pageContainer}>
       <title>{categoryName}</title>
-      <h1 className={styles.categoryName}>{categoryName}</h1>
-      <ul className={styles.productList}>
+      <h2 className={styles.categoryName}>{categoryName}</h2>
+      <div className={styles.productList}>
         {filteredProducts.map((product) => (
           <ProductCard
             {...product}
@@ -52,7 +52,7 @@ const CategoryPage = () => {
             link={`/category/${product.categoryId}/product/${product.id}`}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

@@ -24,7 +24,7 @@ const LandingPage = () => {
       return (
         <section className={styles.section} ref={ref}>
           <h2 className={styles.categoryName}>{title}</h2>
-          <ul className={styles.list}>
+          <div className={styles.list}>
             {filteredProducts.map((product) => {
               return (
                 <ProductCard
@@ -35,7 +35,7 @@ const LandingPage = () => {
                 />
               );
             })}
-          </ul>
+          </div>
         </section>
       );
     },
@@ -45,7 +45,7 @@ const LandingPage = () => {
   if (isLoading) {
     return (
       <div className={styles.pageContainer}>
-        <h1>Loading...</h1>
+        <h2>Loading...</h2>
       </div>
     );
   }
@@ -54,9 +54,9 @@ const LandingPage = () => {
     <div className={styles.pageContainer}>
       <title>Home</title>
       <div className={styles.heroSection}>
-        <img src="/images/headphones.png" alt="" className={styles.heroImage} />
+        <img src="/images/headphones.png" className={styles.heroImage} />
         <div className={styles.heroText}>
-          <h1 className={styles.heroHeading}>Welcome to Our Store</h1>
+          <h2 className={styles.heroHeading}>Welcome to Our Store</h2>
           <p className={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>

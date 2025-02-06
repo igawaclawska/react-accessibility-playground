@@ -11,7 +11,7 @@ const Button = ({
   const buttonClass = `${styles.button} ${styles[variant]}`;
 
   return (
-    <button
+    <div
       aria-haspopup={hasPopup}
       className={buttonClass}
       type={type}
@@ -19,7 +19,7 @@ const Button = ({
       aria-label={ariaLabel}
     >
       {children}
-    </button>
+    </div>
   );
 };
 

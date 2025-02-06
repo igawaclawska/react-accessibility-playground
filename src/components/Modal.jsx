@@ -11,7 +11,7 @@ const Modal = ({ showModal, handleGoToCart, handleCloseModal, product }) => {
           <div className={styles.modalOverlay}>
             <AutoFocusInside>
               <div role="dialog" className={styles.modal}>
-                <h1>{`${product.name} has been added to the cart!`}</h1>
+                <h2>{`${product.name} has been added to the cart!`}</h2>
 
                 <div className={styles.modalButtons}>
                   <Button variant="secondary" onClick={handleCloseModal}>

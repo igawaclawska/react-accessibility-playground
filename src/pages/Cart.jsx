@@ -38,7 +38,7 @@ const Cart = () => {
     return (
       <div className={styles.pageContainer}>
         <title>Your Cart</title>
-        <h1>Your cart is empty.</h1>
+        <h2>Your cart is empty.</h2>
         <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
           {removedProduct &&
             `${removedProduct} has been removed from the cart. Your cart is now empty.`}
@@ -50,25 +50,21 @@ const Cart = () => {
   return (
     <div className={styles.pageContainer}>
       <title>Your Cart</title>
-      <h1 className={styles.heading}>Your Cart</h1>
+      <h2 className={styles.heading}>Your Cart</h2>
       <div className={styles.totalPrice}>
         <h2 aria-live="polite">Total Price: ${totalPrice}</h2>
       </div>
       <div aria-live="polite" className={styles.srOnly}>
         {removedProduct && `${removedProduct} has been removed from the cart.`}
       </div>
-      <ul className={styles.cartItems}>
+      <div className={styles.cartItems}>
         {cart.map((item) => {
           const itemTotalPrice = (item.product.price * item.quantity).toFixed(
             2
           );
           return (
             <li key={item.product.id} className={styles.cartItem}>
-              <img
-                src={item.product.imgSrc}
-                alt=""
-                className={styles.itemImage}
-              />
+              <img src={item.product.imgSrc} className={styles.itemImage} />
               <span className={styles.itemName}>{item.product.name}</span>
               <span className={styles.itemPrice}>
                 {item.product.price.toFixed(2)} x {item.quantity} = $
@@ -91,7 +87,7 @@ const Cart = () => {
             </li>
           );
         })}
-      </ul>
+      </div>
       <Button onClick={handleCheckout}>
         Proceed to Checkout <ArrowRight />
       </Button>
