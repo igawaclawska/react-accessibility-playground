@@ -29,8 +29,8 @@
 }
 
 .productImage {
-  width: 300px;
-  height: 300px;
+  width: 50%;
+  height: auto;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

@@ -4,6 +4,7 @@
   margin: 1em;
   min-width: 300px;
   flex: 1;
+  list-style-type: none;
 }
 
 .card:hover {
