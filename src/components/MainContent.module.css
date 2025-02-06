@@ -1,0 +1,5 @@
+.pageContainer {
+  padding: 2rem;
+  text-align: center;
+  min-height: calc(100vh - 140px);
+}

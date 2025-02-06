@@ -1,5 +1,6 @@
 import { useContext, useCallback } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
+import MainContent from "../components/MainContent";
 import useScrollTo from "../hooks/useScrollTo";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
@@ -44,14 +45,14 @@ const LandingPage = () => {
 
   if (isLoading) {
     return (
-      <div className={styles.pageContainer}>
+      <MainContent>
         <h2>Loading...</h2>
-      </div>
+      </MainContent>
     );
   }
 
   return (
-    <div className={styles.pageContainer}>
+    <MainContent>
       <title>Home</title>
       <div className={styles.heroSection}>
         <img src="/images/headphones.png" className={styles.heroImage} />
@@ -73,7 +74,7 @@ const LandingPage = () => {
       )}
       {renderProducts((product) => product.recommended, "Recommended")}
       {renderProducts((product) => product.newArrival, "New Arrivals")}
-    </div>
+    </MainContent>
   );
 };
 

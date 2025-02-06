@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useContext, useMemo } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
+import MainContent from "../components/MainContent";
 import Modal from "../components/Modal";
 import Button from "../components/Button";
 import styles from "./ProductPage.module.css";
@@ -36,19 +37,19 @@ const ProductPage = () => {
   };
 
   if (isLoading) {
-    return <div className={styles.productPage}>Loading...</div>;
+    return <MainContent>Loading...</MainContent>;
   }
 
   if (!product) {
     return (
-      <div className={styles.productPage}>
+      <MainContent>
         <title>Product not found</title>Product not found.
-      </div>
+      </MainContent>
     );
   }
 
   return (
-    <div className={styles.productPage}>
+    <MainContent>
       <title>{product.name}</title>
       <header className={styles.productHeader}>
         <Link to={`/category/${categoryId}`} className={styles.backLink}>
@@ -74,7 +75,7 @@ const ProductPage = () => {
         handleCloseModal={handleCloseModal}
         product={product}
       />
-    </div>
+    </MainContent>
   );
 };
 

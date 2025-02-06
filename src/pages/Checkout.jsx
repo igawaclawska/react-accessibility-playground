@@ -1,4 +1,5 @@
 import { validate } from "../utils/validation";
+import MainContent from "../components/MainContent";
 import useForm from "../hooks/useForm";
 import Button from "../components/Button";
 import Input from "../components/Input";
@@ -27,7 +28,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
+    <MainContent>
       <title>Checkout</title>
       <h2 className={styles.heading}>Checkout</h2>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -84,7 +85,7 @@ const Checkout = () => {
 
         <Button type="submit">Buy Now</Button>
       </form>
-    </div>
+    </MainContent>
   );
 };
 

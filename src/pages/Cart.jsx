@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
+import MainContent from "../components/MainContent";
 import Button from "../components/Button";
 import DeleteIcon from "../components/icons/DeleteIcon";
 import QuantityControls from "../components/QuantityControls";
@@ -36,15 +37,15 @@ const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <div className={styles.pageContainer}>
+      <MainContent>
         <title>Your Cart</title>
         <h2>Your cart is empty.</h2>
-      </div>
+      </MainContent>
     );
   }
 
   return (
-    <div className={styles.pageContainer}>
+    <MainContent>
       <title>Your Cart</title>
       <h2 className={styles.heading}>Your Cart</h2>
       <div className={styles.totalPrice}>
@@ -84,7 +85,7 @@ const Cart = () => {
       <Button onClick={handleCheckout}>
         Proceed to Checkout <ArrowRight />
       </Button>
-    </div>
+    </MainContent>
   );
 };
 
