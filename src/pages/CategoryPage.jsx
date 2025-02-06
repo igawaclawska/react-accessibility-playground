@@ -12,7 +12,7 @@ const CategoryPage = () => {
   const categoryName = useMemo(() => {
     const category = categories.find((cat) => cat.id === categoryId);
     return category ? category.name : "All Products";
-  }, [categoryId]);
+  }, [categoryId, categories]);
 
   const filteredProducts = useMemo(() => {
     if (categoryId === "all-products") {

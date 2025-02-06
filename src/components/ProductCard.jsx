@@ -5,7 +5,7 @@ const ProductCard = ({ name, imgSrc, link, price, headingLevel = "h3" }) => {
   const HeadingTag = headingLevel;
 
   return (
-    <li tabIndex={0} className={styles.card}>
+    <li className={styles.card}>
       <div className={styles.imageContainer}>
         <img src={imgSrc} alt="" className={styles.image} />
       </div>
