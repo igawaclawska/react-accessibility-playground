@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { useState, useContext, useMemo } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
-import Modal from "../components/Modal";
-import Button from "../components/Button";
+import Main from "../components/shared/Main";
+import AddToCartModal from "../components/AddToCartModal";
+import Button from "../components/shared/Button";
 import styles from "./ProductPage.module.css";
 import ShoppingCartIcon from "../components/Icons/ShoppingCartIcon";
 
@@ -36,31 +37,36 @@ const ProductPage = () => {
   };
 
   if (isLoading) {
-    return <main className={styles.productPage}>Loading...</main>;
+    return (
+      <Main>
+        <div aria-busy="true">Loading...</div>
+      </Main>
+    );
   }
 
-  if (!product) {
+  if (!product && !isLoading) {
     return (
-      <main className={styles.productPage}>
-        <title>Product not found</title>Product not found.
-      </main>
+      <Main>
+        <title>Product not found</title>
+        <h1>Product not found.</h1>
+      </Main>
     );
   }
 
   return (
-    <main className={styles.productPage}>
-      <title>{product.name}</title>
+    <Main>
+      <title>{product?.name}</title>
       <header className={styles.productHeader}>
         <Link to={`/category/${categoryId}`} className={styles.backLink}>
           Back to Category
         </Link>
-        <h1>{product.name}</h1>
+        <h1>{product?.name}</h1>
       </header>
       <div className={styles.productDetails}>
-        <img src={product.imgSrc} alt="" className={styles.productImage} />
+        <img src={product?.imgSrc} alt="" className={styles.productImage} />
         <div className={styles.productInfo}>
-          <p className={styles.productDescription}>{product.description}</p>
-          <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
+          <p className={styles.productDescription}>{product?.description}</p>
+          <p className={styles.productPrice}>${product?.price.toFixed(2)}</p>
           <Button hasPopup={"dialog"} onClick={handleAddToCart}>
             <ShoppingCartIcon />
             Add to Cart
@@ -68,13 +74,13 @@ const ProductPage = () => {
         </div>
       </div>
 
-      <Modal
+      <AddToCartModal
         showModal={showModal}
         handleGoToCart={handleGoToCart}
         handleCloseModal={handleCloseModal}
         product={product}
       />
-    </main>
+    </Main>
   );
 };
 

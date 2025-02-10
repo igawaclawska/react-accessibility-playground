@@ -3,7 +3,7 @@ import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
 import NavigationLink from "./NavigationLink";
 import ShoppingCartIcon from "./Icons/ShoppingCartIcon";
-import NotificationBadge from "./NotificationBadge";
+import NotificationBadge from "./shared/NotificationBadge";
 import styles from "./TopNavigation.module.css";
 
 const TopNavigation = () => {
@@ -14,9 +14,9 @@ const TopNavigation = () => {
   if (isLoading) {
     return (
       <nav className={styles.nav}>
-        <ul className={styles.ul}>
-          <li>Loading...</li>
-        </ul>
+        <div aria-live="assertive" aria-busy="true">
+          Loading...
+        </div>
       </nav>
     );
   }
@@ -28,7 +28,7 @@ const TopNavigation = () => {
         <NavigationLink to="/category/all-products">
           All Products
         </NavigationLink>
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <NavigationLink key={category.id} to={`/category/${category.id}`}>
             {category.name}
           </NavigationLink>

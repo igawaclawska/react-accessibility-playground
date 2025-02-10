@@ -1,7 +1,8 @@
 import { validate } from "../utils/validation";
 import useForm from "../hooks/useForm";
-import Button from "../components/Button";
-import Input from "../components/Input";
+import Main from "../components/shared/Main";
+import Button from "../components/shared/Button";
+import Input from "../components/shared/Input";
 import styles from "./Checkout.module.css";
 
 const Checkout = () => {
@@ -27,7 +28,7 @@ const Checkout = () => {
   };
 
   return (
-    <main className={styles.pageContainer}>
+    <Main>
       <title>Checkout</title>
       <h1 className={styles.heading}>Checkout</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -88,7 +89,7 @@ const Checkout = () => {
         </fieldset>
         <Button type="submit">Buy Now</Button>
       </form>
-    </main>
+    </Main>
   );
 };
 
