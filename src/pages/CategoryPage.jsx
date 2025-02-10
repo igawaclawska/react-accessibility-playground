@@ -50,6 +50,7 @@ const CategoryPage = () => {
             {...product}
             key={product.id}
             headingLevel="h2"
+            alt={""}
             link={`/category/${product.categoryId}/product/${product.id}`}
           />
         ))}
