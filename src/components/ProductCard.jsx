@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 
-const ProductCard = ({ name, imgSrc, link, price, headingLevel = "h3" }) => {
+const ProductCard = ({
+  name,
+  imgSrc,
+  link,
+  price,
+  alt,
+  headingLevel = "h3",
+}) => {
   const HeadingTag = headingLevel;
 
   return (
     <li className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={imgSrc} className={styles.image} />
+        <img src={imgSrc} alt={alt} className={styles.image} />
       </div>
       <div className={styles.content}>
         <HeadingTag className={styles.title}>{name}</HeadingTag>
