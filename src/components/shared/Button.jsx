@@ -12,11 +12,11 @@ const Button = ({
 
   return (
     <button
-      aria-haspopup={hasPopup}
       className={buttonClass}
       type={type}
       onClick={onClick}
       aria-label={ariaLabel}
+      aria-haspopup={hasPopup}
     >
       {children}
     </button>

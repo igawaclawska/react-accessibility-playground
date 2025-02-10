@@ -1,10 +1,10 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { CartProvider } from "./contexts/CartContext";
 import { ProductsProvider } from "./contexts/ProductsContext";
-import Header from "./components/Header";
+import Header from "./components/shared/Header";
 import TopNavigation from "./components/TopNavigation";
 import AppRoutes from "./AppRoutes";
-import Footer from "./components/Footer";
+import Footer from "./components/shared/Footer";
 import "./App.css";
 
 const App = () => {
@@ -16,7 +16,9 @@ const App = () => {
             <TopNavigation />
           </Header>
           <AppRoutes />
-          <Footer />
+          <Footer>
+            <p>&copy; 2025 Webshop. All rights reserved.</p>
+          </Footer>
         </Router>
       </CartProvider>
     </ProductsProvider>

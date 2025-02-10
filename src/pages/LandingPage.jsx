@@ -1,14 +1,14 @@
 import { useContext, useCallback } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import useScrollTo from "../hooks/useScrollTo";
+import Main from "../components/shared/Main";
 import ProductCard from "../components/ProductCard";
-import Button from "../components/Button";
+import Button from "../components/shared/Button";
 import ArrowRight from "../components/Icons/ArrowRight";
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
-  const { productsByCategory, categories, isLoading } =
-    useContext(ProductsContext);
+  const { productsByCategory, categories } = useContext(ProductsContext);
 
   const { elementRef, scrollToElement } = useScrollTo(50);
 
@@ -42,16 +42,8 @@ const LandingPage = () => {
     [categories, productsByCategory]
   );
 
-  if (isLoading) {
-    return (
-      <main className={styles.pageContainer}>
-        <h1>Loading...</h1>
-      </main>
-    );
-  }
-
   return (
-    <main className={styles.pageContainer}>
+    <Main>
       <title>Home</title>
       <div className={styles.heroSection}>
         <img src="/images/headphones.png" alt="" className={styles.heroImage} />
@@ -73,7 +65,7 @@ const LandingPage = () => {
       )}
       {renderProducts((product) => product.recommended, "Recommended")}
       {renderProducts((product) => product.newArrival, "New Arrivals")}
-    </main>
+    </Main>
   );
 };
 

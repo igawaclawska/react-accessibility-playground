@@ -11,7 +11,7 @@ export const ProductsProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 10));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         setCategories(productsData.categories);
 
         const groupedProducts = productsData.products.reduce((acc, product) => {

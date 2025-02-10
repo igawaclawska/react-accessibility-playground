@@ -1,6 +1,7 @@
 import { useContext, useMemo } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { useParams } from "react-router-dom";
+import Main from "../components/shared/Main";
 import ProductCard from "../components/ProductCard";
 import styles from "./CategoryPage.module.css";
 
@@ -24,23 +25,23 @@ const CategoryPage = () => {
 
   if (isLoading) {
     return (
-      <main className={styles.pageContainer}>
-        <h1>Loading...</h1>
-      </main>
+      <Main>
+        <div aria-busy="true">Loading...</div>
+      </Main>
     );
   }
 
   if (filteredProducts.length === 0) {
     return (
-      <main className={styles.pageContainer}>
-        <title>Product page</title>
+      <Main>
+        <title>Category page</title>
         <h1>No products found.</h1>
-      </main>
+      </Main>
     );
   }
 
   return (
-    <main className={styles.pageContainer}>
+    <Main>
       <title>{categoryName}</title>
       <h1 className={styles.categoryName}>{categoryName}</h1>
       <ul className={styles.productList}>
@@ -53,7 +54,7 @@ const CategoryPage = () => {
           />
         ))}
       </ul>
-    </main>
+    </Main>
   );
 };
 

@@ -4,6 +4,7 @@ const NotificationBadge = ({ count }) => {
   return (
     <span
       id="cart-info"
+      role="status"
       aria-label={`Total number of the elements in your cart is ${count}`}
       aria-live="polite"
       className={styles.badge}

@@ -20,8 +20,3 @@
   flex-direction: column;
   gap: 2rem;
 }
-
-.modalButtons {
-  display: flex;
-  justify-content: space-between;
-}
