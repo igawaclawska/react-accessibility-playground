@@ -31,6 +31,7 @@ const LandingPage = () => {
                   key={product.id}
                   {...product}
                   headingLevel="h3"
+                  alt={""}
                   link={`/category/${product.categoryId}/product/${product.id}`}
                 />
               );
