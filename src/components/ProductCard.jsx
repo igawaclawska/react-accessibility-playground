@@ -20,11 +20,11 @@ const ProductCard = ({
         <HeadingTag className={styles.title}>{name}</HeadingTag>
         <p className={styles.price}>${price.toFixed(2)}</p>
         <Link
-          aria-label={`View product ${name}`}
           to={link}
+          aria-label={`View product: ${name}`}
           className={styles.link}
         >
-          <span aria-hidden="true">View Product</span>
+          View Product
         </Link>
       </div>
     </li>

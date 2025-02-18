@@ -1,6 +1,7 @@
-const DeleteIcon = () => {
+const DeleteIcon = ({ ariaHidden }) => {
   return (
     <svg
+      aria-hidden={ariaHidden}
       xmlns="http://www.w3.org/2000/svg"
       height="18px"
       viewBox="6 3 12 18"

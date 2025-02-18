@@ -9,7 +9,6 @@ import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
   const { productsByCategory, categories } = useContext(ProductsContext);
-
   const { elementRef, scrollToElement } = useScrollTo(50);
 
   const renderProducts = useCallback(
@@ -54,7 +53,7 @@ const LandingPage = () => {
             Discover the most amazing products in our collection.
           </p>
           <Button onClick={scrollToElement}>
-            Shop Now <ArrowRight />
+            Shop Now <ArrowRight ariaHidden="true" />
           </Button>
         </div>
       </div>

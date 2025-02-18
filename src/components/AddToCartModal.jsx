@@ -11,17 +11,13 @@ const AddToCartModal = ({
 }) => {
   return (
     <Modal showModal={showModal}>
-      <h1>{`${product.name} has been added to the cart!`}</h1>
+      <h2>{`${product.name} has been added to the cart!`}</h2>
       <div className={styles.modalButtons}>
         <Button variant="secondary" onClick={handleCloseModal}>
           Continue shopping
         </Button>
-        <Button
-          aria-hidden="true"
-          aria-label="Go to Cart"
-          onClick={handleGoToCart}
-        >
-          <ShoppingCartIcon />
+        <Button onClick={handleGoToCart}>
+          <ShoppingCartIcon ariaHidden="true" />
           Go to Cart
         </Button>
       </div>

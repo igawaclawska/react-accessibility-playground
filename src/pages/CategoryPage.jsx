@@ -23,6 +23,7 @@ const CategoryPage = () => {
     return productsByCategory[categoryId] || [];
   }, [productsByCategory, categoryId]);
 
+  //TODO: Implement a different method for announcing the loading state
   if (isLoading) {
     return (
       <Main>

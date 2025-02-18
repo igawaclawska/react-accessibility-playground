@@ -40,7 +40,7 @@ const Cart = () => {
       <Main>
         <title>Your Cart</title>
         <h1>Your cart is empty.</h1>
-        <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+        <div aria-live="polite" className={styles.srOnly}>
           {removedProduct &&
             `${removedProduct} has been removed from the cart. Your cart is now empty.`}
         </div>
@@ -86,7 +86,7 @@ const Cart = () => {
                 ariaLabel={`Remove ${item.product.name} from cart`}
                 onClick={() => handleRemove(item.product.id)}
               >
-                <DeleteIcon />
+                <DeleteIcon ariaHidden="true" />
                 Remove
               </Button>
             </li>
@@ -94,7 +94,7 @@ const Cart = () => {
         })}
       </ul>
       <Button onClick={handleCheckout}>
-        Proceed to Checkout <ArrowRight />
+        Proceed to Checkout <ArrowRight ariaHidden="true" />
       </Button>
     </Main>
   );
