@@ -11,12 +11,11 @@ const TopNavigation = () => {
   const { getTotalItems } = useContext(CartContext);
   const totalItems = getTotalItems();
 
+  //TODO: Implement a different method for announcing the loading state
   if (isLoading) {
     return (
-      <nav className={styles.nav}>
-        <div aria-live="assertive" aria-busy="true">
-          Loading...
-        </div>
+      <nav className={styles.nav} aria-live="assertive">
+        Loading...
       </nav>
     );
   }
@@ -34,7 +33,7 @@ const TopNavigation = () => {
           </NavigationLink>
         ))}
         <NavigationLink to="/cart">
-          <ShoppingCartIcon />
+          <ShoppingCartIcon ariaHidden="true" />
           Cart
           {totalItems > 0 && <NotificationBadge count={totalItems} />}
         </NavigationLink>

@@ -36,10 +36,11 @@ const ProductPage = () => {
     navigate("/cart");
   };
 
+  //TODO: Implement a different method for announcing the loading state
   if (isLoading) {
     return (
       <Main>
-        <div aria-busy="true">Loading...</div>
+        <div aria-live="polite">Loading...</div>
       </Main>
     );
   }
@@ -67,8 +68,8 @@ const ProductPage = () => {
         <div className={styles.productInfo}>
           <p className={styles.productDescription}>{product?.description}</p>
           <p className={styles.productPrice}>${product?.price.toFixed(2)}</p>
-          <Button hasPopup={"dialog"} onClick={handleAddToCart}>
-            <ShoppingCartIcon />
+          <Button hasPopup="dialog" onClick={handleAddToCart}>
+            <ShoppingCartIcon ariaHidden="true" />
             Add to Cart
           </Button>
         </div>
