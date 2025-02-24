@@ -1,20 +1,12 @@
-import FocusLock from "react-focus-lock";
+import ModalMui from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import styles from "./Modal.module.css";
 
-//TODO: Reimplement the Modal component
-const Modal = ({ children, showModal }) => {
+const Modal = ({ children, openModal, onClose }) => {
   return (
-    <>
-      {showModal && (
-        <div className={styles.modalOverlay}>
-          <FocusLock>
-            <div role="dialog" aria-modal="true" className={styles.modal}>
-              {children}
-            </div>
-          </FocusLock>
-        </div>
-      )}
-    </>
+    <ModalMui open={openModal} onClose={onClose}>
+      <Box className={styles.modalBox}>{children}</Box>
+    </ModalMui>
   );
 };
 
