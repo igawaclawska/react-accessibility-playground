@@ -21,8 +21,10 @@ const LandingPage = () => {
       if (filteredProducts.length === 0) return null;
 
       return (
-        <section className={styles.section} ref={ref}>
-          <h2 className={styles.categoryName}>{title}</h2>
+        <section className={styles.section}>
+          <h2 ref={ref} tabIndex="-1" className={styles.categoryName}>
+            {title}
+          </h2>
           <ul className={styles.list}>
             {filteredProducts.map((product) => {
               return (

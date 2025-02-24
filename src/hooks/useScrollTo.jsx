@@ -5,10 +5,17 @@ const useScrollTo = (offset = 0) => {
 
   const scrollToElement = () => {
     if (elementRef.current) {
+      const elementPosition =
+        elementRef.current.getBoundingClientRect().top + window.scrollY;
+
       window.scrollTo({
-        top: elementRef.current.offsetTop - offset,
+        top: elementPosition - offset,
         behavior: "smooth",
       });
+
+      setTimeout(() => {
+        elementRef.current.focus();
+      }, 500);
     }
   };
 
