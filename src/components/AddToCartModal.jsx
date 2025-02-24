@@ -1,16 +1,22 @@
 import Button from "./shared/Button";
 import ShoppingCartIcon from "./Icons/ShoppingCartIcon";
-import styles from "./AddToCartModal.module.css";
 import Modal from "./shared/Modal";
+import styles from "./AddToCartModal.module.css";
 
 const AddToCartModal = ({
-  showModal,
   handleGoToCart,
   handleCloseModal,
   product,
+  openModal,
+  setOpenModal,
 }) => {
   return (
-    <Modal showModal={showModal}>
+    <Modal
+      openModal={openModal}
+      onClose={() => {
+        setOpenModal(false);
+      }}
+    >
       <h2>{`${product.name} has been added to the cart!`}</h2>
       <div className={styles.modalButtons}>
         <Button variant="secondary" onClick={handleCloseModal}>
