@@ -55,13 +55,7 @@ const Cart = () => {
 
       <ul className={styles.cartItems}>
         {cart.map((item) => {
-          return (
-            <CartItem
-              key={item.product.id}
-              item={item}
-              setRemovedProduct={setRemovedProduct}
-            />
-          );
+          return <CartItem key={item.product.id} item={item} />;
         })}
       </ul>
 

@@ -65,7 +65,7 @@ const ProductPage = () => {
       <Heading>{product?.name}</Heading>
       <div className={styles.productDetails}>
         <div className={styles.imageSection}>
-          <Image src={product?.imgSrc} alt={product?.name} size="fit-parent" />
+          <Image src={product?.imgSrc} alt="" size="fit-parent" />
         </div>
         <div className={styles.productInfo}>
           <p className={styles.productDescription}>{product?.description}</p>

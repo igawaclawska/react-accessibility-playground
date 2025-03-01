@@ -9,7 +9,7 @@ const ListOfProductCards = ({ products }) => {
           {...product}
           key={product.id}
           headingLevel={2}
-          alt={""}
+          alt=""
           link={`/category/${product.categoryId}/product/${product.id}`}
         />
       ))}
