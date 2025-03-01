@@ -4,8 +4,6 @@ import Image from "./shared/Image";
 import styles from "./ProductCard.module.css";
 
 const ProductCard = ({ name, imgSrc, link, price, alt, headingLevel = 3 }) => {
-  const HeadingTag = headingLevel;
-
   return (
     <li className={styles.card}>
       <Image
