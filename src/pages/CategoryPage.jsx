@@ -3,8 +3,7 @@ import { ProductsContext } from "../contexts/ProductsContext";
 import { useParams } from "react-router-dom";
 import Main from "../components/shared/Main";
 import Heading from "../components/shared/Heading";
-import ProductCard from "../components/ProductCard";
-import styles from "./CategoryPage.module.css";
+import ListOfProductCards from "../components/ListOfProductCards";
 
 const CategoryPage = () => {
   const { productsByCategory, isLoading, categories } =
@@ -20,7 +19,6 @@ const CategoryPage = () => {
     if (categoryId === "all-products") {
       return Object.values(productsByCategory).flat();
     }
-
     return productsByCategory[categoryId] || [];
   }, [productsByCategory, categoryId]);
 
@@ -46,17 +44,7 @@ const CategoryPage = () => {
     <Main>
       <title>{categoryName}</title>
       <Heading>{categoryName}</Heading>
-      <ul className={styles.productList}>
-        {filteredProducts.map((product) => (
-          <ProductCard
-            {...product}
-            key={product.id}
-            headingLevel={2}
-            alt={""}
-            link={`/category/${product.categoryId}/product/${product.id}`}
-          />
-        ))}
-      </ul>
+      <ListOfProductCards products={filteredProducts} />
     </Main>
   );
 };

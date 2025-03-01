@@ -3,7 +3,7 @@ import { ProductsContext } from "../contexts/ProductsContext";
 import useScrollTo from "../hooks/useScrollTo";
 import Main from "../components/shared/Main";
 import Heading from "../components/shared/Heading";
-import ProductCard from "../components/ProductCard";
+import ListOfProductCards from "../components/ListOfProductCards";
 import Button from "../components/shared/Button";
 import Image from "../components/shared/Image";
 import ArrowRight from "../components/Icons/ArrowRight";
@@ -13,7 +13,7 @@ const LandingPage = () => {
   const { productsByCategory, categories } = useContext(ProductsContext);
   const { elementRef, scrollToElement } = useScrollTo(50);
 
-  const renderProducts = useCallback(
+  const renderCategory = useCallback(
     (filterFn, title, ref) => {
       const filteredProducts = categories.flatMap((category) => {
         const productsInCategory = productsByCategory[category.id] || [];
@@ -27,19 +27,7 @@ const LandingPage = () => {
           <Heading ref={ref} level={2} tabIndex="-1">
             {title}
           </Heading>
-          <ul className={styles.list}>
-            {filteredProducts.map((product) => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  {...product}
-                  headingLevel={3}
-                  alt={""}
-                  link={`/category/${product.categoryId}/product/${product.id}`}
-                />
-              );
-            })}
-          </ul>
+          <ListOfProductCards products={filteredProducts} />
         </section>
       );
     },
@@ -64,13 +52,13 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {renderProducts((product) => product.bestseller, "Bestsellers")}
-      {renderProducts(
+      {renderCategory((product) => product.bestseller, "Bestsellers")}
+      {renderCategory(
         (product) => product.recommended,
         "Recommended",
         elementRef
       )}
-      {renderProducts((product) => product.newArrival, "New Arrivals")}
+      {renderCategory((product) => product.newArrival, "New Arrivals")}
     </Main>
   );
 };

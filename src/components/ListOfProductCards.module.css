@@ -1,7 +1,3 @@
-.section {
-  margin-bottom: 2em;
-}
-
 .productList {
   display: flex;
   flex-direction: row;
