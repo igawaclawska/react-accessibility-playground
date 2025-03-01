@@ -4,6 +4,7 @@ import useScrollTo from "../hooks/useScrollTo";
 import Main from "../components/shared/Main";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/shared/Button";
+import Image from "../components/shared/Image";
 import ArrowRight from "../components/Icons/ArrowRight";
 import styles from "./LandingPage.module.css";
 
@@ -48,7 +49,9 @@ const LandingPage = () => {
     <Main>
       <title>Home</title>
       <div className={styles.heroSection}>
-        <img src="/images/headphones.png" alt="" className={styles.heroImage} />
+        <div className={styles.heroImageContainer}>
+          <Image src={"/images/headphones.png"} alt={""} size="fit-parent" />
+        </div>
         <div className={styles.heroText}>
           <h1 className={styles.heroHeading}>Welcome to Our Store</h1>
           <p className={styles.heroSubheading}>

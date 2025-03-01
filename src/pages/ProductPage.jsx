@@ -6,8 +6,9 @@ import { CartContext } from "../contexts/CartContext";
 import Main from "../components/shared/Main";
 import AddToCartModal from "../components/AddToCartModal";
 import Button from "../components/shared/Button";
-import styles from "./ProductPage.module.css";
 import ShoppingCartIcon from "../components/Icons/ShoppingCartIcon";
+import Image from "../components/shared/Image";
+import styles from "./ProductPage.module.css";
 
 const ProductPage = () => {
   const { categoryId, productId } = useParams();
@@ -55,36 +56,36 @@ const ProductPage = () => {
   }
 
   return (
-    <>
-      <Main>
-        <title>{product?.name}</title>
-        <header className={styles.productHeader}>
-          <Link to={`/category/${categoryId}`} className={styles.backLink}>
-            Back to Category
-          </Link>
-          <h1>{product?.name}</h1>
-        </header>
-        <div className={styles.productDetails}>
-          <img src={product?.imgSrc} alt="" className={styles.productImage} />
-          <div className={styles.productInfo}>
-            <p className={styles.productDescription}>{product?.description}</p>
-            <p className={styles.productPrice}>${product?.price.toFixed(2)}</p>
-            <Button hasPopup="dialog" onClick={handleAddToCart}>
-              <ShoppingCartIcon ariaHidden="true" />
-              Add to Cart
-            </Button>
-          </div>
+    <Main>
+      <title>{product?.name}</title>
+      <header className={styles.productHeader}>
+        <Link to={`/category/${categoryId}`} className={styles.backLink}>
+          Back to Category
+        </Link>
+        <h1>{product?.name}</h1>
+      </header>
+      <div className={styles.productDetails}>
+        <div className={styles.imageSection}>
+          <Image src={product?.imgSrc} alt={product?.name} size="fit-parent" />
         </div>
+        <div className={styles.productInfo}>
+          <p className={styles.productDescription}>{product?.description}</p>
+          <p className={styles.productPrice}>${product?.price.toFixed(2)}</p>
+          <Button hasPopup="dialog" onClick={handleAddToCart}>
+            <ShoppingCartIcon ariaHidden="true" />
+            Add to Cart
+          </Button>
+        </div>
+      </div>
 
-        <AddToCartModal
-          openModal={openModal}
-          setOpenModal={setOpenModal}
-          handleGoToCart={handleGoToCart}
-          handleCloseModal={handleCloseModal}
-          product={product}
-        />
-      </Main>
-    </>
+      <AddToCartModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        handleGoToCart={handleGoToCart}
+        handleCloseModal={handleCloseModal}
+        product={product}
+      />
+    </Main>
   );
 };
 

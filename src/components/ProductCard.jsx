@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Image from "./shared/Image";
 import styles from "./ProductCard.module.css";
 
 const ProductCard = ({
@@ -13,9 +14,12 @@ const ProductCard = ({
 
   return (
     <li className={styles.card}>
-      <div className={styles.imageContainer}>
-        <img src={imgSrc} alt={alt} className={styles.image} />
-      </div>
+      <Image
+        src={imgSrc}
+        alt={alt}
+        className={styles.image}
+        size="fit-parent"
+      />
       <div className={styles.content}>
         <HeadingTag className={styles.title}>{name}</HeadingTag>
         <p className={styles.price}>${price.toFixed(2)}</p>

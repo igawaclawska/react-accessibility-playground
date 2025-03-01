@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
 import QuantityControls from "../components/QuantityControls";
 import Button from "../components/shared/Button";
+import Image from "./shared/Image";
 import DeleteIcon from "../components/icons/DeleteIcon";
 import styles from "./CartItem.module.css";
 
@@ -17,7 +18,7 @@ const CartItem = ({ item }) => {
 
   return (
     <li key={item.product.id} className={styles.cartItem}>
-      <img src={item.product.imgSrc} alt="" className={styles.itemImage} />
+      <Image src={item.product.imgSrc} size="xs" alt="" />
       <span className={styles.itemName}>{item.product.name}</span>
       <span className={styles.itemPrice}>
         {item.product.price.toFixed(2)} x {item.quantity} = ${itemTotalPrice}
