@@ -1,6 +1,7 @@
 import Button from "./shared/Button";
 import ShoppingCartIcon from "./Icons/ShoppingCartIcon";
 import Modal from "./shared/Modal";
+import Heading from "./shared/Heading";
 import styles from "./AddToCartModal.module.css";
 
 const AddToCartModal = ({
@@ -17,7 +18,9 @@ const AddToCartModal = ({
         setOpenModal(false);
       }}
     >
-      <h2>{`${product.name} has been added to the cart!`}</h2>
+      <Heading
+        level={2}
+      >{`${product.name} has been added to the cart!`}</Heading>
       <div className={styles.modalButtons}>
         <Button variant="secondary" onClick={handleCloseModal}>
           Continue shopping

@@ -1,9 +1,11 @@
 import { validate } from "../utils/validation";
 import useForm from "../hooks/useForm";
 import Main from "../components/shared/Main";
+import Heading from "../components/shared/Heading";
+import Form from "../components/shared/Form";
+import Fieldset from "../components/shared/Fieldset";
 import Button from "../components/shared/Button";
 import Input from "../components/shared/Input";
-import styles from "./Checkout.module.css";
 
 const Checkout = () => {
   const initialFormData = {
@@ -30,10 +32,9 @@ const Checkout = () => {
   return (
     <Main>
       <title>Checkout</title>
-      <h1 className={styles.heading}>Checkout</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <fieldset className={styles.fieldset}>
-          <legend className={styles.legend}>Contact Details</legend>
+      <Heading>Checkout</Heading>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Fieldset legend="Contact Details">
           <Input
             label="Name"
             type="text"
@@ -54,9 +55,9 @@ const Checkout = () => {
             helperText={"Use a valid email format (e.g., name@example.com)"}
             errorMessage={errors.email}
           />
-        </fieldset>
-        <fieldset className={styles.fieldset}>
-          <legend className={styles.legend}>Payment Information</legend>
+        </Fieldset>
+
+        <Fieldset legend="Payment Information">
           <Input
             label="Card Number"
             type="number"
@@ -86,9 +87,9 @@ const Checkout = () => {
             onChange={handleChange}
             errorMessage={errors.cvv}
           />
-        </fieldset>
+        </Fieldset>
         <Button type="submit">Buy Now</Button>
-      </form>
+      </Form>
     </Main>
   );
 };
