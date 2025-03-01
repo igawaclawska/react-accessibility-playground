@@ -1,24 +1,16 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 import Main from "../components/shared/Main";
+import Heading from "../components/shared/Heading";
+import CartItem from "../components/CartItem";
 import Button from "../components/shared/Button";
-import DeleteIcon from "../components/icons/DeleteIcon";
-import QuantityControls from "../components/QuantityControls";
 import ArrowRight from "../components/Icons/ArrowRight";
 import styles from "./Cart.module.css";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const [removedProduct, setRemovedProduct] = useState(null);
-  const { cart, handleRemoveItem, handleQuantityChange } =
-    useContext(CartContext);
-
-  const handleRemove = (productId) => {
-    const product = cart.find((item) => item.product.id === productId);
-    handleRemoveItem(productId);
-    setRemovedProduct(product.product.name);
-  };
+  const { cart, removedProduct, setRemovedProduct } = useContext(CartContext);
 
   useEffect(() => {
     if (removedProduct) {
@@ -35,67 +27,43 @@ const Cart = () => {
     .reduce((total, item) => total + item.product.price * item.quantity, 0)
     .toFixed(2);
 
-  if (cart.length === 0) {
-    return (
-      <Main>
-        <title>Your Cart</title>
-        <h1>Your cart is empty.</h1>
-        <div aria-live="polite" className={styles.srOnly}>
-          {removedProduct &&
-            `${removedProduct} has been removed from the cart. Your cart is now empty.`}
-        </div>
-      </Main>
-    );
-  }
-
   return (
     <Main>
       <title>Your Cart</title>
-      <h1 className={styles.heading}>Your Cart</h1>
-      <div className={styles.totalPrice}>
-        <h2 aria-live="polite">Total Price: ${totalPrice}</h2>
+      <Heading>
+        {cart.length === 0 ? `Your Cart is empty` : `Your cart`}
+      </Heading>
+
+      {cart.length !== 0 && (
+        <div className={styles.totalPrice}>
+          <Heading ariaLive="polite" level={2}>
+            Total Price: ${totalPrice}
+          </Heading>
+        </div>
+      )}
+
+      <div
+        aria-live="polite"
+        aria-relevant="removals text"
+        className={styles.srOnly}
+      >
+        {removedProduct &&
+          (cart.length === 0
+            ? `${removedProduct} has been removed. Your cart is now empty.`
+            : `${removedProduct} has been removed from the cart.`)}
       </div>
-      <div aria-live="polite" className={styles.srOnly}>
-        {removedProduct && `${removedProduct} has been removed from the cart.`}
-      </div>
+
       <ul className={styles.cartItems}>
         {cart.map((item) => {
-          const itemTotalPrice = (item.product.price * item.quantity).toFixed(
-            2
-          );
-          return (
-            <li key={item.product.id} className={styles.cartItem}>
-              <img
-                src={item.product.imgSrc}
-                alt=""
-                className={styles.itemImage}
-              />
-              <span className={styles.itemName}>{item.product.name}</span>
-              <span className={styles.itemPrice}>
-                {item.product.price.toFixed(2)} x {item.quantity} = $
-                {itemTotalPrice}
-              </span>
-              <QuantityControls
-                {...item}
-                handleQuantityChange={(delta) =>
-                  handleQuantityChange(item.product.id, delta)
-                }
-              />
-              <Button
-                variant="secondary"
-                ariaLabel={`Remove ${item.product.name} from cart`}
-                onClick={() => handleRemove(item.product.id)}
-              >
-                <DeleteIcon ariaHidden="true" />
-                Remove
-              </Button>
-            </li>
-          );
+          return <CartItem key={item.product.id} item={item} />;
         })}
       </ul>
-      <Button onClick={handleCheckout}>
-        Proceed to Checkout <ArrowRight ariaHidden="true" />
-      </Button>
+
+      {cart.length !== 0 && (
+        <Button onClick={handleCheckout}>
+          Proceed to Checkout <ArrowRight ariaHidden="true" />
+        </Button>
+      )}
     </Main>
   );
 };

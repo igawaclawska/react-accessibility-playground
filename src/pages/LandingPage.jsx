@@ -2,8 +2,10 @@ import { useContext, useCallback } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import useScrollTo from "../hooks/useScrollTo";
 import Main from "../components/shared/Main";
-import ProductCard from "../components/ProductCard";
+import Heading from "../components/shared/Heading";
+import ListOfProductCards from "../components/ListOfProductCards";
 import Button from "../components/shared/Button";
+import Image from "../components/shared/Image";
 import ArrowRight from "../components/Icons/ArrowRight";
 import styles from "./LandingPage.module.css";
 
@@ -11,7 +13,7 @@ const LandingPage = () => {
   const { productsByCategory, categories } = useContext(ProductsContext);
   const { elementRef, scrollToElement } = useScrollTo(50);
 
-  const renderProducts = useCallback(
+  const renderCategory = useCallback(
     (filterFn, title, ref) => {
       const filteredProducts = categories.flatMap((category) => {
         const productsInCategory = productsByCategory[category.id] || [];
@@ -22,22 +24,10 @@ const LandingPage = () => {
 
       return (
         <section className={styles.section}>
-          <h2 ref={ref} tabIndex="-1" className={styles.categoryName}>
+          <Heading ref={ref} level={2} tabIndex="-1">
             {title}
-          </h2>
-          <ul className={styles.list}>
-            {filteredProducts.map((product) => {
-              return (
-                <ProductCard
-                  key={product.id}
-                  {...product}
-                  headingLevel="h3"
-                  alt={""}
-                  link={`/category/${product.categoryId}/product/${product.id}`}
-                />
-              );
-            })}
-          </ul>
+          </Heading>
+          <ListOfProductCards products={filteredProducts} />
         </section>
       );
     },
@@ -48,9 +38,11 @@ const LandingPage = () => {
     <Main>
       <title>Home</title>
       <div className={styles.heroSection}>
-        <img src="/images/headphones.png" alt="" className={styles.heroImage} />
+        <div className={styles.heroImageContainer}>
+          <Image src={"/images/headphones.png"} alt={""} size="fit-parent" />
+        </div>
         <div className={styles.heroText}>
-          <h1 className={styles.heroHeading}>Welcome to Our Store</h1>
+          <Heading className={styles.heroHeading}>Welcome to Our Store</Heading>
           <p className={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>
@@ -60,13 +52,13 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {renderProducts(
-        (product) => product.bestseller,
-        "Bestsellers",
+      {renderCategory((product) => product.bestseller, "Bestsellers")}
+      {renderCategory(
+        (product) => product.recommended,
+        "Recommended",
         elementRef
       )}
-      {renderProducts((product) => product.recommended, "Recommended")}
-      {renderProducts((product) => product.newArrival, "New Arrivals")}
+      {renderCategory((product) => product.newArrival, "New Arrivals")}
     </Main>
   );
 };

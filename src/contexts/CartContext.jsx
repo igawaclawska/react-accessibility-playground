@@ -8,6 +8,8 @@ export const CartProvider = ({ children }) => {
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
+  const [removedProduct, setRemovedProduct] = useState(null);
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -58,6 +60,8 @@ export const CartProvider = ({ children }) => {
         getTotalItems,
         handleRemoveItem,
         handleQuantityChange,
+        removedProduct,
+        setRemovedProduct,
       }}
     >
       {children}
