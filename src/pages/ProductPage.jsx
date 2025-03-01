@@ -4,6 +4,7 @@ import { useState, useContext, useMemo } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import { CartContext } from "../contexts/CartContext";
 import Main from "../components/shared/Main";
+import Heading from "../components/shared/Heading";
 import AddToCartModal from "../components/AddToCartModal";
 import Button from "../components/shared/Button";
 import ShoppingCartIcon from "../components/Icons/ShoppingCartIcon";
@@ -58,12 +59,10 @@ const ProductPage = () => {
   return (
     <Main>
       <title>{product?.name}</title>
-      <header className={styles.productHeader}>
-        <Link to={`/category/${categoryId}`} className={styles.backLink}>
-          Back to Category
-        </Link>
-        <h1>{product?.name}</h1>
-      </header>
+      <Link to={`/category/${categoryId}`} className={styles.backLink}>
+        Back to Category
+      </Link>
+      <Heading>{product?.name}</Heading>
       <div className={styles.productDetails}>
         <div className={styles.imageSection}>
           <Image src={product?.imgSrc} alt={product?.name} size="fit-parent" />

@@ -2,6 +2,7 @@ import { useContext, useCallback } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
 import useScrollTo from "../hooks/useScrollTo";
 import Main from "../components/shared/Main";
+import Heading from "../components/shared/Heading";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/shared/Button";
 import Image from "../components/shared/Image";
@@ -23,16 +24,16 @@ const LandingPage = () => {
 
       return (
         <section className={styles.section}>
-          <h2 ref={ref} tabIndex="-1" className={styles.categoryName}>
+          <Heading ref={ref} level={2} tabIndex="-1">
             {title}
-          </h2>
+          </Heading>
           <ul className={styles.list}>
             {filteredProducts.map((product) => {
               return (
                 <ProductCard
                   key={product.id}
                   {...product}
-                  headingLevel="h3"
+                  headingLevel={3}
                   alt={""}
                   link={`/category/${product.categoryId}/product/${product.id}`}
                 />
@@ -53,7 +54,7 @@ const LandingPage = () => {
           <Image src={"/images/headphones.png"} alt={""} size="fit-parent" />
         </div>
         <div className={styles.heroText}>
-          <h1 className={styles.heroHeading}>Welcome to Our Store</h1>
+          <Heading className={styles.heroHeading}>Welcome to Our Store</Heading>
           <p className={styles.heroSubheading}>
             Discover the most amazing products in our collection.
           </p>
@@ -63,12 +64,12 @@ const LandingPage = () => {
         </div>
       </div>
 
+      {renderProducts((product) => product.bestseller, "Bestsellers")}
       {renderProducts(
-        (product) => product.bestseller,
-        "Bestsellers",
+        (product) => product.recommended,
+        "Recommended",
         elementRef
       )}
-      {renderProducts((product) => product.recommended, "Recommended")}
       {renderProducts((product) => product.newArrival, "New Arrivals")}
     </Main>
   );

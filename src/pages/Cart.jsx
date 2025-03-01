@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 import Main from "../components/shared/Main";
+import Heading from "../components/shared/Heading";
 import CartItem from "../components/CartItem";
 import Button from "../components/shared/Button";
 import ArrowRight from "../components/Icons/ArrowRight";
@@ -29,13 +30,15 @@ const Cart = () => {
   return (
     <Main>
       <title>Your Cart</title>
-      <h1 className={styles.heading}>
+      <Heading>
         {cart.length === 0 ? `Your Cart is empty` : `Your cart`}
-      </h1>
+      </Heading>
 
       {cart.length !== 0 && (
         <div className={styles.totalPrice}>
-          <h2 aria-live="polite">Total Price: ${totalPrice}</h2>
+          <Heading ariaLive="polite" level={2}>
+            Total Price: ${totalPrice}
+          </Heading>
         </div>
       )}
 

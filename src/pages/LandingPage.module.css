@@ -1,7 +1,3 @@
-.pageContainer {
-  min-height: calc(100vh - 140px);
-}
-
 .heroSection {
   display: flex;
   align-items: center;
@@ -28,17 +24,12 @@
 
 .heroHeading {
   font-size: 2.5em;
+  margin: 0;
 }
 
 .heroSubheading {
   font-size: 1.5em;
   color: #666;
-}
-
-.categoryName {
-  font-size: 2em;
-  font-weight: bold;
-  margin: 1em 0;
 }
 
 .section {
